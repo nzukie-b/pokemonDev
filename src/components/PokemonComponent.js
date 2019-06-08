@@ -20,20 +20,34 @@ export default class PokemonComponent extends React.Component {
 
                     <h1>{this.props.pokemon.name}</h1>
                     <h2>Sprites</h2>
+                    <ul>
                     {Object.values(this.props.pokemon.sprites).reverse()
                         .map((img) =>
                             <img src={img} alt=""/>
                         )}
-                    <h2>type</h2>
-                    {this.props.pokemon.types.map(
-                        (type) => <p>{type.type.name}</p>)}
+                    </ul>
+                    <h2>Type</h2>
+                    <ul className="row">
+                        {this.props.pokemon.types.map(
+                            (type) => <div className="col-6">{type.type.name}</div>)}
+                    </ul>
                     <h2>Stats</h2>
-                    {this.props.pokemon.stats.map((stat) => {
-                        return (<div>
-                            <h3>{stat.stat.name}  :  {stat.base_stat}</h3>
-                        </div>)
-                    })}
-
+                    <ul className="row">
+                        {this.props.pokemon.stats.map((stat) => {
+                            return (
+                                <div className="col-6">{stat.stat.name} : {stat.base_stat}</div>
+                            )
+                        })}
+                    </ul>
+                    <h2>Ability</h2>
+                    <ul className="row">
+                        {this.props.pokemon.abilities.map((ability) => <div
+                            className="col-6">{ability.ability.name}</div>)}
+                    </ul>
+                    <h2>Moves</h2>
+                    <ul className="row">
+                        {this.props.pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
+                    </ul>
                 </div>
             </div>
         )

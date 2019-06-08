@@ -10,4 +10,16 @@ export default class PokeAPIService {
         }
         return this.myInstance;
     }
+
+    findPokemon = (pokemon) => {
+        fetch(serverAdress + `pokemon/${pokemon}`,
+            {
+                method: 'Get',
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then(response => response.json())
+
+    }
+
 }

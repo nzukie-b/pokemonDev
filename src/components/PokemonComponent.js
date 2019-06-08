@@ -13,10 +13,14 @@ export default class PokemonComponent extends React.Component {
                     <input className="form-control"
                            placeholder="Enter Pokemon Name"
                            onChange={(e) => {
-                               this.props.findPokemon(e.target.value)
+                               if (e.target.value !== "") {
+                                   this.props.findPokemon(e.target.value.toLowerCase())
+                               }
                            }}/>
                 </div>
-                <hi>{this.props.pokemon.name}</hi>
+                <h1>{this.props.pokemon.name}</h1>
+                <img src={this.props.pokemon.sprites.front_default} alt="front"/>
+                <img src={this.props.pokemon.sprites.back_default} alt="back"/>
             </div>
         )
     }

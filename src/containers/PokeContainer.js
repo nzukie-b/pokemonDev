@@ -27,13 +27,13 @@ const propertyToDispatchMapper = dispatch => ({
             }))
     },
     filterAllByPokemon: (search) => {
+
         dispatch({
             type: "FILTER_ALL_BY_POKEMON",
-            filteredPokemon: pokeService.findAllPokemon().then((response)=> response.json().results.filter((pok) => {
-                return pok.name.includes(search)
-            }))
-
+            filterBy: search
         })
+
+
     }
 })
 

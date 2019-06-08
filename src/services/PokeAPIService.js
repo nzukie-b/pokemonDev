@@ -11,7 +11,7 @@ export default class PokeAPIService {
         return this.myInstance;
     }
     findAllPokemon = () => {
-        fetch(serverAdress + `pokemon`,
+        return fetch(serverAdress + `pokemon`,
             {
                 method: 'Get',
                 headers: {
@@ -21,7 +21,7 @@ export default class PokeAPIService {
     }
 
     findPokemon = (pokemon) => {
-        fetch(serverAdress + `pokemon/${pokemon}`,
+        return fetch(serverAdress + `pokemon/${pokemon}`,
             {
                 method: 'Get',
                 headers: {

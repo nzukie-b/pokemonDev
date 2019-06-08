@@ -17,10 +17,24 @@ export default class PokemonComponent extends React.Component {
                                    this.props.findPokemon(e.target.value.toLowerCase())
                                }
                            }}/>
+
+                    <h1>{this.props.pokemon.name}</h1>
+                    <h2>Sprites</h2>
+                    {Object.values(this.props.pokemon.sprites).reverse()
+                        .map((img) =>
+                            <img src={img} alt=""/>
+                        )}
+                    <h2>type</h2>
+                    {this.props.pokemon.types.map(
+                        (type) => <p>{type.type.name}</p>)}
+                    <h2>Stats</h2>
+                    {this.props.pokemon.stats.map((stat) => {
+                        return (<div>
+                            <h3>{stat.stat.name}  :  {stat.base_stat}</h3>
+                        </div>)
+                    })}
+
                 </div>
-                <h1>{this.props.pokemon.name}</h1>
-                <img src={this.props.pokemon.sprites.front_default} alt="front"/>
-                <img src={this.props.pokemon.sprites.back_default} alt="back"/>
             </div>
         )
     }

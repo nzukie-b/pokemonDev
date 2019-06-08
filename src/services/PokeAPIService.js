@@ -12,7 +12,7 @@ export default class PokeAPIService {
     }
 
     findAllPokemon = () => {
-        return fetch(serverAdress + `pokemon`,
+        return fetch(serverAdress + `pokemon?limit=1000`,
             {
                 method: 'Get',
                 headers: {

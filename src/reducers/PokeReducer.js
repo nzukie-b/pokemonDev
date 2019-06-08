@@ -9699,11 +9699,25 @@ const pokeReducer = (state = {
             }
         ],
         "weight": 60
-    }}, action) => {
+    },
+    allPokemon: [],
+    filteredPokemon: []
+}, action) => {
     switch (action.type) {
         case "FIND_POKEMON":
             return {
+                ...state,
                 pokemon: action.pokemon
+            }
+        case "FIND_ALL_POKEMON":
+            return {
+                ...state,
+                allPokemon: action.allPokemon
+            }
+        case "FILTER_ALL_BY_POKEMON":
+            return {
+                ...state,
+                filteredPokemon: action.filteredPokemon
             }
         default:
             return state;

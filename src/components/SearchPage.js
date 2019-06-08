@@ -8,12 +8,6 @@ import PokeContainer from "../containers/PokeContainer"
 const PokeAPIServie = service.getInstance();
 const store = createStore(pokeReducer)
 
-const renderPokemon = (text) => {
-    PokeAPIServie.findPokemon(text)
-        .then(pokemon => {
-            return <h1>{pokemon.name}</h1>
-        })
-}
 
 
 const SearchPage = () => {

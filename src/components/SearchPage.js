@@ -5,9 +5,8 @@ const PokeAPIServie = service.getInstance();
 
 const renderPokemon = (text) => {
     PokeAPIServie.findPokemon(text)
-        .then(pokeList => pokeList.map(pokemon => {
-            return (<h1>{pokemon.name}</h1>)
-        }))
+        .then(pokemon => {
+        return <h1>{pokemon.name}</h1>})
 }
 
 

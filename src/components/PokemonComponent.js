@@ -11,7 +11,7 @@ export default class PokemonComponent extends React.Component {
                 <div className="container">
                     <h1>Search Page</h1>
                     <input className="form-control"
-                           placeholder="Enter Pokemon Name"
+                           placeholder="Pikachu"
                            onChange={(e) => {
                                if (e.target.value !== "") {
                                    this.props.findPokemon(e.target.value.toLowerCase())
@@ -48,6 +48,7 @@ export default class PokemonComponent extends React.Component {
                     <ul className="row">
                         {this.props.pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
                     </ul>
+
                 </div>
             </div>
         )

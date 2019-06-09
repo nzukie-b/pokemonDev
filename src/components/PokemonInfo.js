@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PokemonInfo = ({pokemon}) => {
+const PokemonInfo = ({ pokemon }) => {
     return (
         <div>
             <h1>{pokemon.name}</h1>
@@ -8,7 +8,7 @@ const PokemonInfo = ({pokemon}) => {
             <ul>
                 {Object.values(pokemon.sprites).reverse()
                     .map((img) =>
-                        <img src={img} alt=""/>
+                        <img src={img} alt="" />
                     )}
             </ul>
             <h2>Type</h2>

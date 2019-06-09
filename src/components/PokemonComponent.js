@@ -1,7 +1,7 @@
 import React from "react"
-import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import PokemonInfo from "./PokemonInfo"
-import Search from "./Serch";
+import Search from "./Search";
 
 export default class PokemonComponent extends React.Component {
     constructor(props) {

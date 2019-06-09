@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import service from "../services/PokeAPIService"
-const pokeService = service.getInstance();
 
 const Search = ({ findPokemon, filterAllByPokemon, filteredPokemon }) => {
     return (
@@ -24,7 +22,7 @@ const Search = ({ findPokemon, filterAllByPokemon, filteredPokemon }) => {
                                 onClick={() => {
                                     findPokemon(pok.name)
                                 }}>
-                                {pok.name}
+                                {pok.name.charAt(0).toUpperCase() + pok.name.slice(1)}
                             </Link>
                         </div>
                     )

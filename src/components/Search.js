@@ -8,9 +8,7 @@ const Search = ({ findPokemon, filterAllByPokemon, filteredPokemon }) => {
             <input className="form-control"
                 placeholder="Pikachu"
                 onChange={(e) => {
-                    if (e.target.value !== "") {
                         filterAllByPokemon(e.target.value.toLowerCase())
-                    }
                 }} />
             <div className="row mt-3">
                 {filteredPokemon.map((pok) => {

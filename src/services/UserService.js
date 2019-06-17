@@ -1,4 +1,4 @@
-const serverAdress = "https://localhost:8080"
+const serverAdress = "http://localhost:8080"
 
 export default class UserService {
     static myInstance = null;
@@ -18,7 +18,7 @@ export default class UserService {
             }).then(response => response.json())
     }
 
-    getUser = (userId) => {
+    findUserById = (userId) => {
         return fetch(serverAdress + `api/users/${userId}`,
             {
                 method: 'Get',
@@ -34,10 +34,10 @@ export default class UserService {
                 method: 'Get',
             })
             .then(response => response.json())
-    addUser = (user) =>
+    createUser = (user) =>
         fetch(serverAdress + '/api/users',
             {
-                method: 'Post',
+                method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
                     'content-type': 'application/json'

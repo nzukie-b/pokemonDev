@@ -9,7 +9,7 @@ export default class UserProfilePage extends React.Component {
 
 
     render() {
-        return (<form className="form-group">
+        return (<form className="form-group container-fluid">
             <h1>Profile</h1>
             <div>
                 <label for="userName">Username</label>
@@ -50,10 +50,14 @@ export default class UserProfilePage extends React.Component {
                        onChange={e => this.updateUserTemp.lastName = e.target.value}/>
 
             </div>
-            <button
-                onClick={() => this.props.createUser(this.updateUserTemp)}>
+            <div
+                className="btn btn-block btn-success"
+
+                onClick={() => {
+                    console.log("Creating user")
+                    this.props.createUser(this.updateUserTemp)}}>
                 Submit
-            </button>
+            </div>
 
         </form>)
     }

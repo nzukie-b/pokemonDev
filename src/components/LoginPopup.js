@@ -2,8 +2,8 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 
 export default class LoginPopup extends React.Component {
-    constructor(props, context) {
-        super(props, context)
+    constructor(props) {
+        super(props)
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.username = ""
@@ -20,6 +20,8 @@ export default class LoginPopup extends React.Component {
 
     handleLogin() {
         this.setState({ show: false });
+        console.log(this.username + this.password)
+        this.props.logIn(this.username,this.password)
     }
 
     handleShow() {
@@ -31,6 +33,9 @@ export default class LoginPopup extends React.Component {
             <>
                 <Button variant="primary" onClick={this.handleShow}>
                     Login
+                </Button>
+                <Button variant="primary" onClick={() => this.props.logOut()}>
+                    Logout
                 </Button>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>

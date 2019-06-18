@@ -1,15 +1,19 @@
 import React from 'react'
-import {Modal, Button} from 'react-bootstrap'
 import NavBar from './Navbar'
-import LoginPopup from "./LoginPopup";
+import UserContainer from "../containers/UserContainer";
+import PokeContainer from "../containers/PokeContainer";
 
-const Homepage = () => {
-    return (
+export default class Homepage extends React.Component {
+    constructor(props){
+        super(props)
+    }
+    render (){return (
         <div>
             <NavBar/>
-
+            <UserContainer />
+            <PokeContainer/>
         </div>
-    )
+    )}
 }
-export default Homepage
+
 

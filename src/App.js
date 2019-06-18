@@ -13,8 +13,9 @@ import UserContainer from "./containers/UserContainer";
 import Homepage from "./components/Homepage"
 import PokeContainer from './containers/PokeContainer';
 import loggedInUserReducer from "./reducers/LoggedInUserReducer";
+import LoggedInUserContainer from "./containers/LoggedInUserContainer";
 
-let rootReducer = combineReducers({ userReducer, pokeReducer,loggedInUserReducer })
+let rootReducer = combineReducers({userReducer, pokeReducer,loggedInUserReducer})
 const store = createStore(rootReducer)
 
 
@@ -22,9 +23,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Homepage />
-        <UserContainer />
-        <PokeContainer/>
+         <Homepage/>
       </Router>
     </Provider>
   );

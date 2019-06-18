@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginPopup from "./LoginPopup";
+import LoggedInUserContainer from "../containers/LoggedInUserContainer";
 
 const NavBar = () => {
         return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,7 +12,7 @@ const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
                     <a className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></a>
-                    <LoginPopup/>
+                    <LoggedInUserContainer/>
                 </div>
             </div>
         </nav>)

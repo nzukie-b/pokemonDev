@@ -12,8 +12,9 @@ import { Provider } from "react-redux";
 import UserContainer from "./containers/UserContainer";
 import Homepage from "./components/Homepage"
 import PokeContainer from './containers/PokeContainer';
+import loggedInUserReducer from "./reducers/LoggedInUserReducer";
 
-let rootReducer = combineReducers({ userReducer, pokeReducer })
+let rootReducer = combineReducers({ userReducer, pokeReducer,loggedInUserReducer })
 const store = createStore(rootReducer)
 
 

@@ -7,7 +7,6 @@ const userService = service.getInstance();
 const stateToPropertyMapper = state => ({
     users: state.userReducer.users,
     user: state.userReducer.user,
-    currentlyLoggedInUser: state.userReducer.currentlyLoggedInUser
 })
 
 const propertyToDispatchMapper = dispatch => ({

@@ -1,11 +1,5 @@
-const userReducer = (state = {
-    users: [],
-    user: {
-        username: "batman",
-        password: "batmobile",
-        firstName: "bruce",
-        lastName: "Wayne"
-    },
+const loggedInUserReducer = (state = {
+    currentlyLoggedInUser: {}
 }, action) => {
     switch (action.type) {
         case "FIND_ALL_USERS":
@@ -24,4 +18,4 @@ const userReducer = (state = {
     }
 }
 
-export default userReducer;
+export default loggedInUserReducer;

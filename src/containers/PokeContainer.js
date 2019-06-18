@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
 import service from '../services/PokeAPIService'
-import PokemonComponent from "../components/PokemonComponent"
+import PokemonComponent from "../components/Pokemon/PokemonComponent"
 
 const pokeService = service.getInstance();
 
 const stateToPropertyMapper = state => ({
-    pokemon: state.pokemon,
-    allPokemon: state.allPokemon,
-    filteredPokemon: state.filteredPokemon
+    pokemon: state.pokeReducer.pokemon,
+    allPokemon: state.pokeReducer.allPokemon,
+    filteredPokemon: state.pokeReducer.filteredPokemon
 })
 
 const propertyToDispatchMapper = dispatch => ({

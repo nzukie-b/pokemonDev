@@ -15,29 +15,40 @@ export default class LoginPopup extends React.Component {
     }
 
     handleClose() {
-        this.setState({ show: false });
+        this.setState({show: false});
     }
 
     handleLogin() {
-        this.setState({ show: false });
+        this.setState({show: false});
         console.log(this.username + this.password)
-        this.props.logIn(this.username,this.password)
+        this.props.logIn(this.username, this.password)
     }
 
     handleShow() {
-        this.setState({ show: true });
+        this.setState({show: true});
+    }
+
+    loginLogoutBtn = () => {
+        if (!this.props.loggedIn) {
+            return (
+                <div className="btn btn-primary" onClick={this.handleShow}>
+                    Login
+                </div>
+            )
+        } else {
+            return (
+                <Button className="btn btn-primary" onClick={() => this.props.logOut()}>
+                    Logout
+                </Button>
+            )
+        }
     }
 
     render() {
         return (
             <>
-                <Button variant="primary" onClick={this.handleShow}>
-                    Login
-                </Button>
-                <Button variant="primary" onClick={() => this.props.logOut()}>
-                    Logout
-                </Button>
 
+                {this.loginLogoutBtn()}
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>

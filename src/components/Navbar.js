@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginPopup from "./LoginPopup";
 import LoggedInUserContainer from "../containers/LoggedInUserContainer";
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
         return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,7 +12,10 @@ const NavBar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <a className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></a>
+                    <Link className="nav-item nav-link active" to="/">Home <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-item nav-link active" to="/profile">Profile</Link>
+                    <Link className="nav-item nav-link active" to="/search">Search</Link>
+
                     <LoggedInUserContainer/>
                 </div>
             </div>

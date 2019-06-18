@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 
-const PokemonInfo = ({ pokemon }) => {
+const PokemonInfo = ({ pokemon, loggedIn }) => {
     return (
         <div>
             <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
@@ -49,9 +49,16 @@ const PokemonInfo = ({ pokemon }) => {
                     {pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
                 </ul>
             </div>
+            {collectBtn(loggedIn)}
             <Link className="btn btn-block btn-outline-secondary" to="/search">Back</Link>
         </div>
     )
+}
+
+const collectBtn = (loggedIn) => {
+    if(loggedIn) {
+        return (<div className="btn btn-outline-dark btn-block">Collect</div>)
+    }
 }
 
 export default PokemonInfo

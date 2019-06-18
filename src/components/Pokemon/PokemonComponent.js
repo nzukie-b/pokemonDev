@@ -30,7 +30,7 @@ export default class PokemonComponent extends React.Component {
                             }
                         />
                         <Route path="/pokemon"
-                            render={() => <PokemonInfo pokemon={this.props.pokemon} />} />
+                            render={() => <PokemonInfo pokemon={this.props.pokemon} loggedIn={this.props.loggedIn}/>} />
                     </div>
                 </div>
         )

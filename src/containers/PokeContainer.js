@@ -7,7 +7,8 @@ const pokeService = service.getInstance();
 const stateToPropertyMapper = state => ({
     pokemon: state.pokeReducer.pokemon,
     allPokemon: state.pokeReducer.allPokemon,
-    filteredPokemon: state.pokeReducer.filteredPokemon
+    filteredPokemon: state.pokeReducer.filteredPokemon,
+    loggedIn: state.loggedInUserReducer.loggedIn
 })
 
 const propertyToDispatchMapper = dispatch => ({

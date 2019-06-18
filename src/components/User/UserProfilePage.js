@@ -4,7 +4,28 @@ export default class UserProfilePage extends React.Component {
     constructor(props) {
         super(props)
         this.props.findAllUsers()
-        this.updateUserTemp = this.props.user
+    }
+
+    SubmitButton = () => {
+        if (this.props.loggedIn) {
+            return (
+                <div
+                    className="btn btn-block btn-success"
+                    onClick={() => {
+                        console.log("Updating user " + this.props.user.id)
+                        console.log(this.props.user)
+                        console.log(this.props.user)
+                        this.props.updateUser(this.props.user)
+                    }}>Update</div>)
+        } else {
+            return (
+                <div
+                    className="btn btn-block btn-success"
+                    onClick={() => {
+                        console.log("Creating user")
+                        this.props.createUser(this.props.user)
+                    }}>Create User</div>)
+        }
     }
 
 
@@ -12,22 +33,22 @@ export default class UserProfilePage extends React.Component {
         return (<form className="form-group container-fluid">
             <h1>Profile</h1>
             <div>
-                <label for="userName">Username</label>
+                <label htmlFor="userName">Username</label>
                 <input type="text"
                        placeholder="Username"
                        className="form-control"
                        id="userName"
                        defaultValue={this.props.user.username}
-                       onChange={e => this.updateUserTemp.username = e.target.value}/>
+                       onChange={e => this.props.user.username = e.target.value}/>
             </div>
             <div>
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input type="password"
                        placeholder="pass"
                        className="form-control"
                        id="password"
                        defaultValue={this.props.user.password}
-                       onChange={e => this.updateUserTemp.password = e.target.value}/>
+                       onChange={e => this.props.user.password = e.target.value}/>
 
             </div>
             <div>
@@ -37,7 +58,7 @@ export default class UserProfilePage extends React.Component {
                        className="form-control"
                        id="first"
                        defaultValue={this.props.user.firstName}
-                       onChange={e => this.updateUserTemp.firstName = e.target.value}/>
+                       onChange={e => this.props.user.firstName = e.target.value}/>
 
             </div>
             <div>
@@ -47,17 +68,11 @@ export default class UserProfilePage extends React.Component {
                        className="form-control"
                        id="last"
                        defaultValue={this.props.user.lastName}
-                       onChange={e => this.updateUserTemp.lastName = e.target.value}/>
+                       onChange={e => this.props.user.lastName = e.target.value}/>
 
             </div>
-            <div
-                className="btn btn-block btn-success"
 
-                onClick={() => {
-                    console.log("Creating user")
-                    this.props.createUser(this.updateUserTemp)}}>
-                Submit
-            </div>
+            {this.SubmitButton()}
 
         </form>)
     }

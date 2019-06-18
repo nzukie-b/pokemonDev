@@ -18,10 +18,9 @@ export default class PokemonComponent extends React.Component {
 
     render() {
         return (
-            <Router>
                 <div>
                     <div className="container">
-                        {this.redirectToSearch()}
+                        {/* {this.redirectToSearch()} */}
                         <Route path="/search"
                             render={() =>
                                 <Search
@@ -34,7 +33,6 @@ export default class PokemonComponent extends React.Component {
                             render={() => <PokemonInfo pokemon={this.props.pokemon} />} />
                     </div>
                 </div>
-            </Router>
         )
     }
 }

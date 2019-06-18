@@ -5,9 +5,9 @@ import UserProfilePage from "../components/User/UserProfilePage";
 const userService = service.getInstance();
 
 const stateToPropertyMapper = state => ({
-    users: state.users,
-    user: state.user,
-    currentlyLoggedInUser: state.currentlyLoggedInUser
+    users: state.userReducer.users,
+    user: state.userReducer.user,
+    currentlyLoggedInUser: state.userReducer.currentlyLoggedInUser
 })
 
 const propertyToDispatchMapper = dispatch => ({

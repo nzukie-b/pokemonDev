@@ -19,7 +19,6 @@ export default class LoginPopup extends React.Component {
     }
 
     handleLogin() {
-        this.props.
         this.setState({ show: false });
     }
 

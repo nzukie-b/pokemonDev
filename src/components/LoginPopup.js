@@ -46,7 +46,7 @@ export default class LoginPopup extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
 
                 {this.loginLogoutBtn()}
                 <Modal show={this.state.show} onHide={this.handleClose}>
@@ -81,7 +81,7 @@ export default class LoginPopup extends React.Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-            </>
+            </div>
         );
     }
 }

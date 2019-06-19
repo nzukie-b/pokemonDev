@@ -1,13 +1,14 @@
 import {connect} from 'react-redux'
 import service from '../services/UserService'
 import UserProfilePage from "../components/User/UserProfilePage";
+import LoginPopup from "../components/LoginPopup";
 
 const userService = service.getInstance();
 
 const stateToPropertyMapper = state => ({
     users: state.userReducer.users,
-    user: state.loggedInUserReducer.currentlyLoggedInUser,
-    loggedIn: state.loggedInUserReducer.loggedIn,
+    user: state.userReducer.currentlyLoggedInUser,
+    loggedIn: state.userReducer.loggedIn,
     allPokemon: state.pokeReducer.allPokemon
 })
 
@@ -39,8 +40,21 @@ const propertyToDispatchMapper = dispatch => ({
                 type: "UPDATE_USER",
                 user: user
             })),
-
-
+    logIn: (userName, password) => {
+        userService
+            .getUserByUserNameAndPassword(
+                userName, password)
+            .then(user => dispatch({
+                type: "LOG_IN",
+                currentlyLoggedInUser: user,
+                loggedIn: true
+            }))
+    },
+    logOut: () => {
+        dispatch({
+            type: "LOG_OUT",
+        })
+    }
 })
 
 const UserContainer = connect(
@@ -48,4 +62,9 @@ const UserContainer = connect(
     propertyToDispatchMapper
 )(UserProfilePage)
 
-export default UserContainer
+const loggedInUserContainer = connect(
+    stateToPropertyMapper,
+    propertyToDispatchMapper
+)(LoginPopup)
+
+export {loggedInUserContainer, UserContainer}

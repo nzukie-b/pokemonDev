@@ -10,8 +10,8 @@ const stateToPropertyMapper = state => ({
     pokemon: state.pokeReducer.pokemon,
     allPokemon: state.pokeReducer.allPokemon,
     filteredPokemon: state.pokeReducer.filteredPokemon,
-    loggedIn: state.loggedInUserReducer.loggedIn,
-    currentlyLoggedInUser: state.loggedInUserReducer.currentlyLoggedInUser
+    loggedIn: state.userReducer.loggedIn,
+    currentlyLoggedInUser: state.userReducer.currentlyLoggedInUser
 })
 
 const propertyToDispatchMapper = dispatch => ({

@@ -6,6 +6,8 @@ const userReducer = (state = {
         firstName: "bruce",
         lastName: "Wayne"
     },
+    currentlyLoggedInUser: {},
+    loggedIn: false
 }, action) => {
     switch (action.type) {
         case "FIND_ALL_USERS":
@@ -18,6 +20,20 @@ const userReducer = (state = {
                 ...state,
                 user: action.user
             }
+        case "LOG_IN":
+            console.log(action.currentlyLoggedInUser)
+            return {
+                ...state,
+                currentlyLoggedInUser: action.currentlyLoggedInUser,
+                loggedIn: action.loggedIn
+            }
+        case "LOG_OUT":
+            return {
+                currentlyLoggedInUser: {},
+                loggedIn: false
+            }
+        case "IS_LOGGED_IN":
+            return state
         default:
             return state;
 

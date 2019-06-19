@@ -13,6 +13,24 @@ export default class UserProfilePage extends React.Component {
         if (this.props.loggedIn) {
             this.props.updateCurrentUser(this.props.user.id)
         }
+        this.state = {
+            collectedPokemon: []
+        }
+    }
+
+    componentWillMount = () => {
+        if (this.props.loggedIn) {
+            this.props.user.collectedPokemon.map((poke) => {
+                pokeService.findPokemon(poke.id)
+                    .then(pokeInfo => {
+                        var newCollection = this.state.collectedPokemon.slice();
+                        newCollection.push(pokeInfo);
+                        this.setState({
+                            collectedPokemon: newCollection
+                        })
+                    })
+            })
+        }
     }
 
     SubmitButton = () => {
@@ -93,7 +111,8 @@ export default class UserProfilePage extends React.Component {
                     </div>
                     {this.SubmitButton()}
                     <CollectedPokemon loggedIn={this.props.loggedIn}
-                                      user={this.props.user}/>
+                                      user={this.props.user}
+                                      collectedPokemon={this.state.collectedPokemon}/>
 
                 </form>
             </div>

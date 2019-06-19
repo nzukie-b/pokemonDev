@@ -21,6 +21,11 @@ const pokeReducer = (state = {
                     return pokemon.name.includes(action.filterBy)
                 })
             }
+        case "ADD_POKEMON_TO_USER":
+            return {
+                ...state,
+                currentlyLoggedInUser: action.currentlyLoggedInUser
+            }
         default:
             return state;
     }

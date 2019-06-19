@@ -51,13 +51,18 @@ export default class UserService {
             }).then(response => response.json())
 
     updateUser = (user) =>
-        fetch(serverAdress+ `/api/users/${user.id}`,
-            {method: 'PUT',
+        fetch(serverAdress + `/api/users/${user.id}`,
+            {
+                method: 'PUT',
                 body: JSON.stringify(user),
                 headers: {
                     'content-type': 'application/json'
                 }
             })
-
+    collectPokemon = (pokeId, userId) =>
+        fetch(serverAdress + `/api/users/${userId}/pokemon/${pokeId}`,
+            {
+                method: 'PUT',
+            })
 
 }

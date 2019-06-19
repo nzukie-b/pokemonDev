@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
-const PokemonInfo = ({ pokemon, loggedIn }) => {
+const PokemonInfo = ({pokemon, loggedIn, addPokemonToUser, userId}) => {
     return (
         <div>
             <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
@@ -11,7 +11,7 @@ const PokemonInfo = ({ pokemon, loggedIn }) => {
                 <ul>
                     {Object.values(pokemon.sprites).reverse()
                         .map((img) =>
-                            <img src={img} alt="" />
+                            <img src={img} alt=""/>
                         )}
                 </ul>
             </div>
@@ -49,15 +49,18 @@ const PokemonInfo = ({ pokemon, loggedIn }) => {
                     {pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
                 </ul>
             </div>
-            {collectBtn(loggedIn)}
+            {collectBtn(loggedIn, addPokemonToUser, pokemon, userId)}
             <Link className="btn btn-block btn-outline-secondary" to="/search">Back</Link>
         </div>
     )
 }
 
-const collectBtn = (loggedIn) => {
-    if(loggedIn) {
-        return (<div className="btn btn-outline-dark btn-block">Collect</div>)
+const collectBtn = (loggedIn, addPokemonToUser, pokemon, userId) => {
+    if (loggedIn) {
+        return (
+            <div className="btn btn-outline-dark btn-block"
+                 onClick={() => {
+                     addPokemonToUser(pokemon.id, userId)}}>Collect</div>)
     }
 }
 

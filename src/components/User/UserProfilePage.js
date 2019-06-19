@@ -1,7 +1,8 @@
 import React from "react"
 import pService from "../../services/PokeAPIService"
 import uService from "../../services/UserService"
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
+
 const pokeService = pService.getInstance();
 const userService = uService.getInstance();
 
@@ -9,8 +10,8 @@ export default class UserProfilePage extends React.Component {
     constructor(props) {
         super(props)
         this.props.findAllUsers()
-        this.state = {
-            collectedPokemon: []
+        if(this.props.loggedIn) {
+            // this.props.updateCurrentUser()
         }
     }
 
@@ -39,14 +40,15 @@ export default class UserProfilePage extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="row mt-2 container-fluid">
-                    {this.state.collectedPokemon.map((poke) => {
-                        const linkVar = "/pokemon/" + poke.name
+                    {this.props.user.collectedPokemon.map((poke) => {
+                        console.log(poke)
+                        const linkVar = "/pokemon/" + poke.id
                         return (
-                            <div className="col-2 mb-1 px-0 mr-1" key={poke.name}>
+                            <div className="col-2 mb-1 px-0 mr-1" key={poke.id}>
                                 <Link className="btn btn-outline-info btn-block"
-                                    to={linkVar}>
-                                        {/* MIGHT NEED THE ONCLICK FROM SEARCH.JS */}
-                                    {poke.name.charAt(0).toUpperCase() + poke.name.slice(1)}
+                                      to={linkVar}>
+                                    {/* MIGHT NEED THE ONCLICK FROM SEARCH.JS*/}
+                                    {poke.id}
                                 </Link>
                             </div>
                         )
@@ -54,21 +56,6 @@ export default class UserProfilePage extends React.Component {
                     }
                 </div>
             )
-        }
-    }
-
-    componentWillMount = () => {
-        if (this.props.loggedIn) {
-            this.props.user.collectedPokemon.map((poke) => {
-                pokeService.findPokemon(poke.id)
-                    .then(pokeInfo => {
-                        var newCollection = this.state.collectedPokemon.slice();
-                        newCollection.push(pokeInfo);
-                        this.setState({
-                            collectedPokemon: newCollection
-                        })
-                    })
-            })
         }
     }
 
@@ -80,40 +67,40 @@ export default class UserProfilePage extends React.Component {
                     <div>
                         <label htmlFor="userName">Username</label>
                         <input type="text"
-                            placeholder="Username"
-                            className="form-control"
-                            id="userName"
-                            defaultValue={this.props.user.username}
-                            onChange={e => this.props.user.username = e.target.value} />
+                               placeholder="Username"
+                               className="form-control"
+                               id="userName"
+                               defaultValue={this.props.user.username}
+                               onChange={e => this.props.user.username = e.target.value}/>
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
                         <input type="password"
-                            placeholder="pass"
-                            className="form-control"
-                            id="password"
-                            defaultValue={this.props.user.password}
-                            onChange={e => this.props.user.password = e.target.value} />
+                               placeholder="pass"
+                               className="form-control"
+                               id="password"
+                               defaultValue={this.props.user.password}
+                               onChange={e => this.props.user.password = e.target.value}/>
 
                     </div>
                     <div>
                         <label htmlFor="first">First Name</label>
                         <input type="text"
-                            placeholder="First Name"
-                            className="form-control"
-                            id="first"
-                            defaultValue={this.props.user.firstName}
-                            onChange={e => this.props.user.firstName = e.target.value} />
+                               placeholder="First Name"
+                               className="form-control"
+                               id="first"
+                               defaultValue={this.props.user.firstName}
+                               onChange={e => this.props.user.firstName = e.target.value}/>
 
                     </div>
                     <div className="mb-2">
                         <label htmlFor="last">Last Name</label>
                         <input type="text"
-                            placeholder="Last Name"
-                            className="form-control"
-                            id="last"
-                            defaultValue={this.props.user.lastName}
-                            onChange={e => this.props.user.lastName = e.target.value} />
+                               placeholder="Last Name"
+                               className="form-control"
+                               id="last"
+                               defaultValue={this.props.user.lastName}
+                               onChange={e => this.props.user.lastName = e.target.value}/>
                     </div>
 
                     {this.SubmitButton()}

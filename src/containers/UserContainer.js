@@ -7,7 +7,8 @@ const userService = service.getInstance();
 const stateToPropertyMapper = state => ({
     users: state.userReducer.users,
     user: state.loggedInUserReducer.currentlyLoggedInUser,
-    loggedIn: state.loggedInUserReducer.loggedIn
+    loggedIn: state.loggedInUserReducer.loggedIn,
+    allPokemon: state.pokeReducer.allPokemon
 })
 
 const propertyToDispatchMapper = dispatch => ({
@@ -37,7 +38,8 @@ const propertyToDispatchMapper = dispatch => ({
             .then(user => dispatch({
                 type: "UPDATE_USER",
                 user: user
-            }))
+            })),
+
 
 })
 

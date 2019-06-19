@@ -35,7 +35,7 @@ export default class PokemonComponent extends React.Component {
                                    pokemon={this.props.pokemon}
                                    loggedIn={this.props.loggedIn}
                                    addPokemonToUser={this.props.addPokemonToUser}
-                                   userId={this.props.currentlyLoggedInUser.id}/>}/>
+                                   userId={this.props.user.id}/>}/>
                 </div>
             </div>
         )

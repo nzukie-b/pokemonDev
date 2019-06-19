@@ -11,7 +11,7 @@ const stateToPropertyMapper = state => ({
     allPokemon: state.pokeReducer.allPokemon,
     filteredPokemon: state.pokeReducer.filteredPokemon,
     loggedIn: state.userReducer.loggedIn,
-    currentlyLoggedInUser: state.userReducer.currentlyLoggedInUser
+    user: state.userReducer.user
 })
 
 const propertyToDispatchMapper = dispatch => ({
@@ -39,7 +39,7 @@ const propertyToDispatchMapper = dispatch => ({
         userService.collectPokemon(pokeId,userId).then(
             user => dispatch({
                 type: "ADD_POKEMON_TO_USER",
-                currentlyLoggedInUser: user
+                user: user
             }))
 
     }

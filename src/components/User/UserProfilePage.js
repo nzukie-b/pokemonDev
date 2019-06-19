@@ -11,7 +11,7 @@ export default class UserProfilePage extends React.Component {
         super(props)
         this.props.findAllUsers()
         if(this.props.loggedIn) {
-            // this.props.updateCurrentUser()
+            this.props.updateCurrentUser()
         }
     }
 
@@ -70,7 +70,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="Username"
                                className="form-control"
                                id="userName"
-                               defaultValue={this.props.user.username}
+                               value={this.props.user.username}
                                onChange={e => this.props.user.username = e.target.value}/>
                     </div>
                     <div>
@@ -79,7 +79,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="pass"
                                className="form-control"
                                id="password"
-                               defaultValue={this.props.user.password}
+                               value={this.props.user.password}
                                onChange={e => this.props.user.password = e.target.value}/>
 
                     </div>
@@ -89,7 +89,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="First Name"
                                className="form-control"
                                id="first"
-                               defaultValue={this.props.user.firstName}
+                               value={this.props.user.firstName}
                                onChange={e => this.props.user.firstName = e.target.value}/>
 
                     </div>
@@ -99,7 +99,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="Last Name"
                                className="form-control"
                                id="last"
-                               defaultValue={this.props.user.lastName}
+                               value={this.props.user.lastName}
                                onChange={e => this.props.user.lastName = e.target.value}/>
                     </div>
 

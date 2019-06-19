@@ -24,7 +24,7 @@ const pokeReducer = (state = {
         case "ADD_POKEMON_TO_USER":
             return {
                 ...state,
-                currentlyLoggedInUser: action.currentlyLoggedInUser
+                user: action.user
             }
         default:
             return state;

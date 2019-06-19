@@ -7,9 +7,8 @@ const userService = service.getInstance();
 
 const stateToPropertyMapper = state => ({
     users: state.userReducer.users,
-    user: state.userReducer.currentlyLoggedInUser,
+    user: state.userReducer.user,
     loggedIn: state.userReducer.loggedIn,
-    allPokemon: state.pokeReducer.allPokemon
 })
 
 const propertyToDispatchMapper = dispatch => ({
@@ -46,7 +45,7 @@ const propertyToDispatchMapper = dispatch => ({
                 userName, password)
             .then(user => dispatch({
                 type: "LOG_IN",
-                currentlyLoggedInUser: user,
+                user: user,
                 loggedIn: true
             }))
     },
@@ -54,6 +53,16 @@ const propertyToDispatchMapper = dispatch => ({
         dispatch({
             type: "LOG_OUT",
         })
+    },
+    updateCurrentUser: (userId)=>{
+        userService
+            .findUserById(
+                userId)
+            .then(user => dispatch({
+                type: "LOG_IN",
+                user: user,
+                loggedIn: true
+            }))
     }
 })
 

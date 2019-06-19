@@ -19,7 +19,7 @@ export default class UserService {
     }
 
     findUserById = (userId) => {
-        return fetch(serverAdress + `api/users/${userId}`,
+        return fetch(serverAdress + `/api/users/${userId}`,
             {
                 method: 'Get',
             })

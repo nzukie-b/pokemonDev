@@ -10,12 +10,6 @@ export default class PokemonComponent extends React.Component {
         this.props.findPokemon("ditto")
     }
 
-    redirectToSearch = () => {
-        if (window.location.pathname == "/") {
-            return <Redirect to="/search"></Redirect>
-        }
-    }
-
     render() {
         return (
             <div>
@@ -29,13 +23,15 @@ export default class PokemonComponent extends React.Component {
                                    filterAllByPokemon={this.props.filterAllByPokemon}/>
                            }
                     />
-                    <Route path="/pokemon"
+                    <Route path="/pokemon/:pokemonId"
                            render={() =>
                                <PokemonInfo
                                    pokemon={this.props.pokemon}
                                    loggedIn={this.props.loggedIn}
                                    addPokemonToUser={this.props.addPokemonToUser}
-                                   userId={this.props.user.id}/>}/>
+                                   userId={this.props.user.id}
+                                   findPokemon={this.props.findPokemon}/>
+                           }/>
                 </div>
             </div>
         )

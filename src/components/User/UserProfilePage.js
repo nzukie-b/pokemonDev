@@ -35,6 +35,7 @@ export default class UserProfilePage extends React.Component {
                     }}>Create User</div>)
         }
     }
+
     render() {
         return (
             <div className="container-fluid">
@@ -43,44 +44,56 @@ export default class UserProfilePage extends React.Component {
                     <div>
                         <label htmlFor="userName">Username</label>
                         <input type="text"
-                            placeholder="Username"
-                            className="form-control"
-                            id="userName"
-                            value={this.props.user.username}
-                            onChange={e => this.props.user.username = e.target.value} />
+                               placeholder="Username"
+                               className="form-control"
+                               id="userName"
+                               value={this.props.user.username}
+                               onChange={e => this.props.user.username = e.target.value}/>
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
                         <input type="password"
-                            placeholder="pass"
-                            className="form-control"
-                            id="password"
-                            value={this.props.user.password}
-                            onChange={e => this.props.user.password = e.target.value} />
+                               placeholder="pass"
+                               className="form-control"
+                               id="password"
+                               value={this.props.user.password}
+                               onChange={e => this.props.user.password = e.target.value}/>
 
                     </div>
                     <div>
                         <label htmlFor="first">First Name</label>
                         <input type="text"
-                            placeholder="First Name"
-                            className="form-control"
-                            id="first"
-                            value={this.props.user.firstName}
-                            onChange={e => this.props.user.firstName = e.target.value} />
+                               placeholder="First Name"
+                               className="form-control"
+                               id="first"
+                               value={this.props.user.firstName}
+                               onChange={e => this.props.user.firstName = e.target.value}/>
 
                     </div>
                     <div className="mb-2">
                         <label htmlFor="last">Last Name</label>
                         <input type="text"
+                               placeholder="Last Name"
+                               className="form-control"
+                               id="last"
+                               value={this.props.user.lastName}
+                               onChange={e => this.props.user.lastName = e.target.value}/>
+                    </div>
+                    <div className="mb-2">
+                        <label htmlFor="type">Last Name</label>
+                        <select
                             placeholder="Last Name"
                             className="form-control"
-                            id="last"
-                            value={this.props.user.lastName}
-                            onChange={e => this.props.user.lastName = e.target.value} />
+                            id="type"
+                            value={this.props.user.role}
+                            onChange={e => this.props.user.role = e.target.value}>
+                            <option value="COLLECTOR">Collector</option>
+                            <option value="TRAINER">Trainer</option>
+                        </select>
                     </div>
                     {this.SubmitButton()}
                     <CollectedPokemon loggedIn={this.props.loggedIn}
-                        user={this.props.user} />
+                                      user={this.props.user}/>
 
                 </form>
             </div>

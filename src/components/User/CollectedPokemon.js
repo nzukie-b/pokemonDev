@@ -22,6 +22,8 @@ const CollectedPokemon = ({loggedIn, user}) => {
                 }
             </div>
         )
+    } else {
+        return <div></div>
     }
 }
 export default CollectedPokemon

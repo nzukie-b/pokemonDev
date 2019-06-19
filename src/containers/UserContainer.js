@@ -62,9 +62,9 @@ const UserContainer = connect(
     propertyToDispatchMapper
 )(UserProfilePage)
 
-const loggedInUserContainer = connect(
+const LoggedInUserContainer = connect(
     stateToPropertyMapper,
     propertyToDispatchMapper
 )(LoginPopup)
 
-export {loggedInUserContainer, UserContainer}
+export {LoggedInUserContainer, UserContainer}

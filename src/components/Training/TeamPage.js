@@ -1,5 +1,5 @@
 import React from 'react'
-import CollectedPokemon from "../User/CollectedPokemon";
+import CollectedPokemon from "../Pokemon/CollectedPokemon";
 
 export default class TeamPage extends React.Component {
     constructor(props) {
@@ -23,7 +23,9 @@ export default class TeamPage extends React.Component {
                 <div>
                     <CollectedPokemon loggedIn={this.props.loggedIn}
                                       user={this.props.user}
-                                      collectedPokemon={this.props.user.collectedPokemon}/>
+                                      collectedPokemon={this.props.user.collectedPokemon}
+                                      training={true}
+                                      addPokemonToTeam={this.props.addPokemonToTeam}/>
                 </div>)
         }
     }

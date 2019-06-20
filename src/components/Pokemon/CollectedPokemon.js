@@ -1,6 +1,7 @@
 import React from "react"
 import {Link} from "react-router-dom"
 import pService from "../../services/PokeAPIService";
+import {CollectedPokemonBtns} from "./CollectedPokemonBtns"
 
 const pokeService = pService.getInstance();
 
@@ -42,11 +43,6 @@ class CollectedPokemon extends React.Component {
             }
         }
     }
-    areYouACollector = () => {
-        if (this.props.user.role === "COLLECTOR") {
-            return (<h3>You must be a trainer to have pokemon on your team</h3>)
-        }
-    }
 
     render() {
         if (this.props.loggedIn) {
@@ -61,11 +57,11 @@ class CollectedPokemon extends React.Component {
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
                                     <div className="col-2 mb-1 px-0 mr-1" key={poke.id}>
-                                        <Link className="btn btn-outline-info btn-block"
-                                              to={linkVar}>
-                                            {/* MIGHT NEED THE ONCLICK FROM SEARCH.JS*/}
-                                            {poke.name}
-                                        </Link>
+                                        <CollectedPokemonBtns linkVar={linkVar}
+                                                              poke={poke}
+                                                              training={this.props.training}
+                                                              addPokemonToTeam={this.props.addPokemonToTeam}
+                                                              userId={this.props.user.id}/>
                                     </div>
                                 )
                             })

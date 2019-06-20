@@ -1,4 +1,5 @@
 import React from 'react'
+import CollectedPokemon from "../User/CollectedPokemon";
 
 export default class TeamPage extends React.Component {
     constructor(props) {
@@ -19,14 +20,11 @@ export default class TeamPage extends React.Component {
             </div>)
         } else {
             return (
-                <ul>
-                    {console.log(this.props.team)}
-                    {this.props.team.map(pokemon =>
-                        <li>
-                            <div>{pokemon.pokeId.id}</div>
-                            <div>{pokemon.level}</div>
-                        </li>)}
-                </ul>)
+                <div>
+                    <CollectedPokemon loggedIn={this.props.loggedIn}
+                                      user={this.props.user}
+                                      collectedPokemon={this.props.user.collectedPokemon}/>
+                </div>)
         }
     }
 

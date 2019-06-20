@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
+import {Link, Redirect} from "react-router-dom";
 
 export default class LoginPopup extends React.Component {
     constructor(props) {
@@ -37,9 +38,9 @@ export default class LoginPopup extends React.Component {
             )
         } else {
             return (
-                <Button className="btn btn-primary" onClick={() => this.props.logOut()}>
+                <Link to="/" className="btn btn-primary" onClick={() => this.props.logOut()}>
                     Logout
-                </Button>
+                </Link>
             )
         }
     }
@@ -76,9 +77,9 @@ export default class LoginPopup extends React.Component {
                         <Button variant="secondary" onClick={() => this.handleClose()}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={() => this.handleLogin()}>
+                        <Link className="btn btn-primary"  to="/" onClick={() => this.handleLogin()}>
                             Login
-                        </Button>
+                        </Link>
                     </Modal.Footer>
                 </Modal>
             </div>

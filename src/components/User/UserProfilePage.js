@@ -65,7 +65,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="Username"
                                className="form-control"
                                id="userName"
-                               value={this.props.user.username}
+                               defaultValue={this.props.user.username}
                                onChange={e => this.props.user.username = e.target.value}/>
                     </div>
                     <div>
@@ -74,7 +74,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="pass"
                                className="form-control"
                                id="password"
-                               value={this.props.user.password}
+                               defaultValue={this.props.user.password}
                                onChange={e => this.props.user.password = e.target.value}/>
 
                     </div>
@@ -84,7 +84,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="First Name"
                                className="form-control"
                                id="first"
-                               value={this.props.user.firstName}
+                               defaultValue={this.props.user.firstName}
                                onChange={e => this.props.user.firstName = e.target.value}/>
 
                     </div>
@@ -94,7 +94,7 @@ export default class UserProfilePage extends React.Component {
                                placeholder="Last Name"
                                className="form-control"
                                id="last"
-                               value={this.props.user.lastName}
+                               defaultValue={this.props.user.lastName}
                                onChange={e => this.props.user.lastName = e.target.value}/>
                     </div>
                     <div className="mb-2">
@@ -103,7 +103,7 @@ export default class UserProfilePage extends React.Component {
                             placeholder="Last Name"
                             className="form-control"
                             id="type"
-                            value={this.props.user.role}
+                            defaultValue={this.props.user.role}
                             onChange={e => this.props.user.role = e.target.value}>
                             <option value="COLLECTOR">Collector</option>
                             <option value="TRAINER">Trainer</option>

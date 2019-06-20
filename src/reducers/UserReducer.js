@@ -1,6 +1,7 @@
 const userReducer = (state = {
     users: [],
     user: {
+        id:-1,
         username: "batman",
         password: "batmobile",
         firstName: "bruce",

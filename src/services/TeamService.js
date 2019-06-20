@@ -11,7 +11,7 @@ export default class TeamService {
         return this.myInstance;
     }
 
-    getTeam = (userId) =>
+    findTeam = (userId) =>
         fetch(serverAdress + `/api/users/${userId}/team`,
             {
                 method: 'Get',

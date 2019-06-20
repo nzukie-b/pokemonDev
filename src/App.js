@@ -10,8 +10,9 @@ import pokeReducer from "./reducers/PokeReducer";
 import userReducer from "./reducers/UserReducer"
 import {Provider} from "react-redux";
 import Homepage from "./components/Homepage"
+import teamReducer from "./reducers/TeamReducer";
 
-let rootReducer = combineReducers({userReducer, pokeReducer})
+let rootReducer = combineReducers({userReducer, pokeReducer,teamReducer})
 const store = createStore(rootReducer)
 
 

@@ -1,8 +1,10 @@
 const teamReducer = (state = {
-    team: []
+    team: [],
+    apiTeam:[{}]
 }, action) => {
     switch (action.type) {
         case "FIND_TEAM":
+            console.log(action.team)
             return {
                 ...state,
                 team: action.team
@@ -21,6 +23,16 @@ const teamReducer = (state = {
             return {
                 ...state,
                 team: action.team
+            }
+        case "CLEAR_API_TEAM":
+            return {
+                ...state,
+                apiTeam: []
+            }
+        case "ADD_POKEMON_ON_API_TEAM":
+            return {
+                ...state,
+                apiTeam: [... state.apiTeam, action.poke]
             }
         default:
             return state;

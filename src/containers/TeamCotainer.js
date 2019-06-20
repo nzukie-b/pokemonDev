@@ -1,12 +1,16 @@
 import {connect} from 'react-redux'
 import service from '../services/TeamService'
+import pService from '../services/PokeAPIService'
 import TeamPage from "../components/Training/TeamPage";
 
 
 const teamService = service.getInstance();
+const pokeService = pService.getInstance();
+
 
 const stateToPropertyMapper = state => ({
     team: state.teamReducer.team,
+    apiTeam: state.teamReducer.apiTeam,
     user: state.userReducer.user,
     loggedIn: state.userReducer.loggedIn,
 })
@@ -14,10 +18,12 @@ const stateToPropertyMapper = state => ({
 const propertyToDispatchMapper = dispatch => ({
     findTeam: (userId) => {
         teamService.findTeam(userId)
-            .then(team => dispatch({
-                type: "FIND_TEAM",
-                team: team
-            }))
+            .then(team =>
+                dispatch({
+                    type: "FIND_TEAM",
+                    team: team
+                })
+            )
     },
     addPokemonToTeam: (userId, pokemonId) => {
         teamService.addPokemonToTeam(userId, pokemonId)
@@ -34,7 +40,24 @@ const propertyToDispatchMapper = dispatch => ({
             }))
     },
     updatePokemonOnTeam: (userId, pokemon) => {
-        teamService.updatePokemonOnTeam(userId,pokemon)
+        teamService.updatePokemonOnTeam(userId, pokemon)
+            .then(team => dispatch({
+                type: "UPDATE_POKEMON_ON_TEAM",
+                team: team
+            }))
+    },
+    updateApiTeam: (team, userId) => {
+        teamService.findTeam(userId)
+            .then(team => dispatch({
+                type: "CLEAR_API_TEAM",
+                team: team
+            })).then(
+            team.map(poke =>
+                pokeService.findPokemon(poke.pokeId.id)
+                    .then(poke => dispatch({
+                        type: "ADD_POKEMON_ON_API_TEAM",
+                        poke: poke
+                    }))))
     }
 
 })

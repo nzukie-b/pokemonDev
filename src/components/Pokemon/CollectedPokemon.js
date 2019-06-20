@@ -30,7 +30,7 @@ class CollectedPokemon extends React.Component {
             })
             if (this.props.user.role === "TRAINER") {
                 this.props.user.team.map((poke) => {
-                    pokeService.findPokemon(poke.id)
+                    pokeService.findPokemon(poke.pokeId.id)
                         .then(pokeInfo => {
                             var newCollection = this.state.team.slice();
                             newCollection.push(pokeInfo);
@@ -51,7 +51,6 @@ class CollectedPokemon extends React.Component {
                     <div className="row mt-2 container-fluid">
                         <h2>Collected Pokemon</h2>
                         <div className="container-fluid">
-
                             {this.state.collectedPokemon.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name

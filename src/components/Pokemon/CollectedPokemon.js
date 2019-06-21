@@ -1,7 +1,7 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 import pService from "../../services/PokeAPIService";
-import {CollectedPokemonBtns} from "./CollectedPokemonBtns"
+import { CollectedPokemonBtns } from "./CollectedPokemonBtns"
 
 const pokeService = pService.getInstance();
 
@@ -59,50 +59,51 @@ class CollectedPokemon extends React.Component {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
-                                    <div className="col-12 col-md-2 mb-1 px-0 mr-1" key={poke.id}>
+                                    <div className="col-12 col-md-2 mb-1 px-1" key={poke.id}>
                                         <CollectedPokemonBtns linkVar={linkVar}
-                                                              poke={poke}
-                                                              training={this.props.training}
-                                                              addPokemonToTeam={this.props.addPokemonToTeam}
-                                                              userId={this.props.user.id}/>
+                                            poke={poke}
+                                            training={this.props.training}
+                                            addPokemonToTeam={this.props.addPokemonToTeam}
+                                            userId={this.props.user.id} />
                                     </div>
                                 )
                             })
                             }
                         </div>
                     </div>
-                    <div className="row mt-2 container-fluid">
+                    <div className="row mt-2 mx-1 px-1 container-fluid">
                         {this.props.user.role === "TRAINER" &&
-                        <h2>Team Pokemon</h2>}
+                            <h2>Team Pokemon</h2>}
                         {/*this.areYouACollector*/}
                         <div className="container-fluid row">
                             {this.state.team.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.pokemonAPI.name
                                 return (
-                                    <div className="" key={poke.pokemonAPI.id}>
+                                    <div className="col-12 col-md-4 col-xl-2 pb-2" key={poke.pokemonAPI.id}>
 
-                                        <div className="col">
-                                            <div className="card" styles={{width: '18rem'}}>
-                                                <img className="card-img-top"
-                                                     src={poke.pokemonAPI.sprites.front_default}/>
-                                                <div className="card-body">
-                                                    <h5 className="card-title">
-                                                        {poke.pokemonAPI.name}
+                                        <div>
+                                            <div className="card">
+                                                <img className="card-img-top img-fluid"
+                                                    src={poke.pokemonAPI.sprites.front_default} />
+                                                <div className="card-body px-2">
+                                                    <h5 className="card-title text-center">
+                                                        {poke.pokemonAPI.name.charAt(0).toUpperCase() + poke.pokemonAPI.name.slice(1)}
                                                     </h5>
-                                                    <p className="card-body">{"level " + poke.pokemonTeam.level}</p>
+                                                    <p className="card-text mb-2 text-center">{"level " + poke.pokemonTeam.level}</p>
                                                     <Link className="btn btn-outline-info btn-block"
-                                                          to={linkVar}>
+                                                        to={linkVar}>
                                                         Info
                                                     </Link>
-                                                    {this.props.training &&<div className="btn btn-warning"
-                                                         onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
+                                                    {this.props.training && <div className="btn btn-warning"
+                                                        onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
                                                         Remove
                                                     </div>}
-                                                    {this.props.training &&<div className="btn btn-warning"
-                                                                                onClick={() => {
-                                                                                    poke.pokemonTeam.level ++
-                                                                                    this.props.updatePokemonOnTeam(this.props.user.id, poke.pokemonTeam)}}>
+                                                    {this.props.training && <div className="btn btn-warning"
+                                                        onClick={() => {
+                                                            poke.pokemonTeam.level++
+                                                            this.props.updatePokemonOnTeam(this.props.user.id, poke.pokemonTeam)
+                                                        }}>
                                                         Train
                                                     </div>}
                                                 </div>

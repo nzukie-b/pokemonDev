@@ -13,9 +13,9 @@ export default class UserList extends React.Component {
             var collectionSize = this.props.user.collectedPokemon.length
             return (
                 <div>
-                    <p>Hi {this.props.user.firstName.charAt(0).toUpperCase() +
-                        this.props.user.firstName.slice(1)}!</p>
-                    <p>You've collected {collectionSize} out of 964 Pokemon</p>
+                    <h4>Hi {this.props.user.firstName.charAt(0).toUpperCase() +
+                        this.props.user.firstName.slice(1)}!</h4>
+                    <h5>You've collected {collectionSize} out of 964 Pokemon</h5>
                 </div>
             )
         }
@@ -24,7 +24,7 @@ export default class UserList extends React.Component {
     getTeamLevelTotal = (user) => {
         var levelTotal = 0;
         user.team.map(poke => {
-            levelTotal += parseInt(poke.level)
+            levelTotal += poke.level
         })
         return levelTotal;
     }
@@ -33,7 +33,7 @@ export default class UserList extends React.Component {
         if (this.props.loggedIn && this.props.user.role == 'TRAINER') {
             var levelTotal = this.getTeamLevelTotal(this.props.user)
             return (
-                <p>Your team has a combined level of {levelTotal}</p>
+                <h5>Your team has a combined level of {levelTotal}</h5>
             )
         }
     }
@@ -60,9 +60,9 @@ export default class UserList extends React.Component {
 
     showTopTenTeams = () => {
         var allUsers = this.props.users.sort((user1, user2) =>
-            this.getTeamLevelTotal(user2) < this.getTeamLevelTotal(user1))
+            this.getTeamLevelTotal(user2) - this.getTeamLevelTotal(user1))
         if (allUsers.length > 10) {
-            allUsers = allUsers.splice(0, 10 - allUsers.lengths)
+            allUsers = allUsers.splice(10)
         }
         return allUsers.map(user => {
             return (
@@ -91,7 +91,7 @@ export default class UserList extends React.Component {
                     {this.showTeamLevelTotal()}
                     {this.showActiveUserInfo()}
                 </div>
-                <h1 className="mb-1">Users</h1>
+                <h1 className="mb-1">Top 10 Users</h1>
                 {this.showTopTenTeams()}
             </div>
         )

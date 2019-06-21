@@ -1,6 +1,6 @@
 import React from "react";
-import {Button, Modal} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import { Link, Redirect } from "react-router-dom";
 
 export default class LoginPopup extends React.Component {
     constructor(props) {
@@ -16,31 +16,39 @@ export default class LoginPopup extends React.Component {
     }
 
     handleClose() {
-        this.setState({show: false});
+        this.setState({ show: false });
     }
 
     handleLogin() {
-        this.setState({show: false});
+        this.setState({ show: false });
         console.log(this.username + this.password)
         this.props.logIn(this.username, this.password)
     }
 
     handleShow() {
-        this.setState({show: true});
+        this.setState({ show: true });
     }
 
     loginLogoutBtn = () => {
         if (!this.props.loggedIn) {
             return (
-                <div className="btn btn-primary" onClick={this.handleShow}>
-                    Login
+                <div>
+                    <div className="btn btn-primary" onClick={this.handleShow}>
+                        Login
+                </div>
                 </div>
             )
         } else {
             return (
-                <Link to="/" className="btn btn-primary" onClick={() => this.props.logOut()}>
-                    Logout
-                </Link>
+                <div className="row">
+                    <Link className="ml-1 nav-item nav-link" to={`/profile/${this.props.user.username}`}
+                        onClick={() => this.props.findUserProfile(this.props.user.id)}>
+                        Your Profile
+                        </Link>
+                    <Link to="/" className="btn btn-primary" onClick={() => this.props.logOut()}>
+                        Logout
+                    </Link>
+                </div>
             )
         }
     }
@@ -58,18 +66,18 @@ export default class LoginPopup extends React.Component {
                         <div>
                             <label htmlFor="userName">Username</label>
                             <input type="text"
-                                   placeholder="Username"
-                                   className="form-control"
-                                   id="userName"
-                                   onChange={e => this.username = e.target.value}/>
+                                placeholder="Username"
+                                className="form-control"
+                                id="userName"
+                                onChange={e => this.username = e.target.value} />
                         </div>
                         <div>
                             <label htmlFor="password">Password</label>
                             <input type="password"
-                                   placeholder="pass"
-                                   className="form-control"
-                                   id="password"
-                                   onChange={e => this.password = e.target.value}/>
+                                placeholder="pass"
+                                className="form-control"
+                                id="password"
+                                onChange={e => this.password = e.target.value} />
 
                         </div>
                     </Modal.Body>
@@ -77,7 +85,7 @@ export default class LoginPopup extends React.Component {
                         <Button variant="secondary" onClick={() => this.handleClose()}>
                             Close
                         </Button>
-                        <Link className="btn btn-primary"  to="/" onClick={() => this.handleLogin()}>
+                        <Link className="btn btn-primary" to="/" onClick={() => this.handleLogin()}>
                             Login
                         </Link>
                     </Modal.Footer>

@@ -2,6 +2,7 @@ import {connect} from 'react-redux'
 import service from '../services/UserService'
 import UserProfilePage from "../components/User/UserProfilePage";
 import LoginPopup from "../components/LoginPopup";
+import UserList from '../components/User/UserList';
 
 const userService = service.getInstance();
 
@@ -9,6 +10,7 @@ const stateToPropertyMapper = state => ({
     users: state.userReducer.users,
     user: state.userReducer.user,
     loggedIn: state.userReducer.loggedIn,
+    profileUser: state.userReducer.profileUser
 })
 
 const propertyToDispatchMapper = dispatch => ({
@@ -23,9 +25,16 @@ const propertyToDispatchMapper = dispatch => ({
         userService.findUserById(userId)
             .then(user => dispatch({
                     type: "FIND_USER_BY_ID",
-                    user: user
+                    user: user,
                 })
             )
+    },
+    findUserProfile: (userId) => {
+        userService.findUserById(userId)
+        .then(user => dispatch({
+            type: "UPDATE_PROFILE_USER",
+            profileUser: user
+        }))
     },
     createUser: (user) =>
         userService.createUser(user)
@@ -40,8 +49,7 @@ const propertyToDispatchMapper = dispatch => ({
                 user: user
             })),
     logIn: (userName, password) => {
-        userService
-            .getUserByUserNameAndPassword(
+        userService.getUserByUserNameAndPassword(
                 userName, password)
             .then(user => dispatch({
                 type: "LOG_IN",
@@ -76,4 +84,9 @@ const LoggedInUserContainer = connect(
     propertyToDispatchMapper
 )(LoginPopup)
 
-export {LoggedInUserContainer, UserContainer}
+const UserListContainer = connect(
+    stateToPropertyMapper,
+    propertyToDispatchMapper
+)(UserList)
+
+export {LoggedInUserContainer, UserContainer, UserListContainer}

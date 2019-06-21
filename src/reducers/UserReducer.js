@@ -1,13 +1,14 @@
 const userReducer = (state = {
     users: [],
     user: {
-        id:-1,
+        id: -1,
         username: "batman",
         password: "batmobile",
         firstName: "bruce",
         lastName: "Wayne"
     },
-    loggedIn: false
+    loggedIn: false,
+    profileUser: {}
 }, action) => {
     switch (action.type) {
         case "FIND_ALL_USERS":
@@ -19,6 +20,11 @@ const userReducer = (state = {
             return {
                 ...state,
                 user: action.user
+            }
+        case "UPDATE_PROFILE_USER":
+            return {
+                ...state,
+                profileUser: action.profileUser
             }
         case "LOG_IN":
             console.log(action.user)

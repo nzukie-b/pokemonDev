@@ -1,6 +1,6 @@
 const teamReducer = (state = {
     team: [],
-    apiTeam:[{}]
+    apiTeam:[]
 }, action) => {
     switch (action.type) {
         case "FIND_TEAM":

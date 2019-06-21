@@ -33,7 +33,11 @@ class CollectedPokemon extends React.Component {
                     pokeService.findPokemon(poke.pokeId.id)
                         .then(pokeInfo => {
                             var newCollection = this.state.team.slice();
-                            newCollection.push(pokeInfo);
+                            var superPokemon = {
+                                pokemonTeam: poke,
+                                pokemonAPI: pokeInfo
+                            }
+                            newCollection.push(superPokemon);
                             this.setState({
                                 collectedPokemon: this.state.collectedPokemon,
                                 team: newCollection
@@ -73,21 +77,26 @@ class CollectedPokemon extends React.Component {
                         <div className="container-fluid row">
                             {this.state.team.map((poke) => {
                                 console.log(poke)
-                                const linkVar = "/pokemon/" + poke.name
+                                const linkVar = "/pokemon/" + poke.pokemonAPI.name
                                 return (
-                                    <div className="" key={poke.id}>
+                                    <div className="" key={poke.pokemonAPI.id}>
 
                                         <div className="col">
                                             <div className="card" styles={{width: '18rem'}}>
                                                 <img className="card-img-top"
-                                                     src={poke.sprites.front_default}/>
+                                                     src={poke.pokemonAPI.sprites.front_default}/>
                                                 <div className="card-body">
                                                     <h5 className="card-title">
-                                                        {poke.name}
+                                                        {poke.pokemonAPI.name}
                                                     </h5>
                                                     <Link className="btn btn-outline-info btn-block"
                                                           to={linkVar}>
+                                                        Info
                                                     </Link>
+                                                    <div className="btn btn-warning"
+                                                         onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
+                                                        Remove
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

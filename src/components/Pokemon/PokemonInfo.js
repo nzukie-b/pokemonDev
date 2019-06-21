@@ -72,7 +72,7 @@ const collectBtn = (loggedIn, addPokemonToUser, pokemon, userId) => {
         return (
             <div className="btn btn-outline-dark btn-block"
                  onClick={() => {
-                     addPokemonToUser(pokemon.id, userId)
+                     addPokemonToUser(pokemon.id, userId, pokemon)
                  }}>Collect</div>)
     }
 }

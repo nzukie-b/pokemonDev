@@ -1,6 +1,6 @@
 import React from "react";
 import {Route} from "react-router-dom";
-import TeamContainer from "../../containers/TeamCotainer";
+import {TeamContainer} from "../../containers/UserContainer";
 
 const TrainingRoute = () => {
     return (

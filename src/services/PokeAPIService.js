@@ -27,7 +27,8 @@ export default class PokeAPIService {
                 {
                     method: 'Get',
                     headers: {
-                        'content-type': 'application/json'
+                        'content-type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
                     }
                 })
                 .then(response => response.json())

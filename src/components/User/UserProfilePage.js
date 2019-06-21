@@ -1,7 +1,7 @@
 import React from "react"
 import pService from "../../services/PokeAPIService"
 import uService from "../../services/UserService"
-import CollectedPokemon from "./CollectedPokemon";
+import CollectedPokemon from "../Pokemon/CollectedPokemon";
 
 
 export default class UserProfilePage extends React.Component {
@@ -12,7 +12,6 @@ export default class UserProfilePage extends React.Component {
             this.props.updateCurrentUser(this.props.user.id)
         }
     }
-
 
 
     SubmitButton = () => {
@@ -59,7 +58,6 @@ export default class UserProfilePage extends React.Component {
                                 id="password"
                                 defaultValue={this.props.user.password}
                                 onChange={e => this.props.user.password = e.target.value} />
-
                         </div>
                         <div>
                             <label htmlFor="first">First Name</label>
@@ -69,7 +67,6 @@ export default class UserProfilePage extends React.Component {
                                 id="first"
                                 defaultValue={this.props.user.firstName}
                                 onChange={e => this.props.user.firstName = e.target.value} />
-
                         </div>
                         <div className="mb-2">
                             <label htmlFor="last">Last Name</label>
@@ -95,7 +92,8 @@ export default class UserProfilePage extends React.Component {
                         {this.SubmitButton()}
                         <CollectedPokemon loggedIn={this.props.loggedIn}
                             user={this.props.user}
-                            collectedPokemon={this.props.user.collectedPokemon} />
+                            collectedPokemon={this.props.user.collectedPokemon}
+                            training={false} />
 
                     </form>
                 </div>
@@ -111,7 +109,7 @@ export default class UserProfilePage extends React.Component {
                                 placeholder="Username"
                                 className="form-control"
                                 defaultValue={this.props.profileUser.username}
-                                onChange={e => this.props.profileUser.username = e.target.value}readOnly />
+                                onChange={e => this.props.profileUser.username = e.target.value} readOnly />
                         </div>
                         <div>
                             <label htmlFor="first">First Name</label>

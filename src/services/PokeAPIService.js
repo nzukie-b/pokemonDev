@@ -1,4 +1,4 @@
-const serverAdress = "https://pokeapi.co/api/v2/"
+import {serverAdressPoke} from "../Constants/Server";
 
 export default class PokeAPIService {
     static myInstance = null;
@@ -12,7 +12,7 @@ export default class PokeAPIService {
     }
 
     findAllPokemon = () => {
-        return fetch(serverAdress + `pokemon?limit=1000`,
+        return fetch(serverAdressPoke + `pokemon?limit=1000`,
             {
                 method: 'Get',
                 headers: {
@@ -23,7 +23,7 @@ export default class PokeAPIService {
 
     findPokemon = (pokemon) => {
         if (pokemon !== "") {
-            return fetch(serverAdress + `pokemon/${pokemon}`,
+            return fetch(serverAdressPoke + `pokemon/${pokemon}`,
                 {
                     method: 'Get',
                     headers: {

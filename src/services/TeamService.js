@@ -1,4 +1,4 @@
-const serverAdress = "https://s1-project-server.herokuapp.com/"
+import {serverAdress} from "../Constants/Server";
 
 export default class TeamService {
     static myInstance = null;

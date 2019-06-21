@@ -60,6 +60,7 @@ export default class Register extends React.Component {
                         <select
                             placeholder="COLLECTOR"
                             className="form-control"
+                            defaultValue="COLLECTOR"
                             id="type"
                             onChange={e => this.state.newUser.role = e.target.value}>
                             <option value="COLLECTOR">Collector</option>
@@ -69,13 +70,16 @@ export default class Register extends React.Component {
                     <div
                         className="btn btn-block btn-success"
                         onClick={(e) => {
-                            // e.preventDefault();
-                            console.log(this.state.newUser)
-                            this.props.createUser(this.state.newUser).then(
-                                this.setState({
-                                    newUser: {}
-                                })
-                            )
+                            e.preventDefault();
+                            if (this.state.newUser.username !== "" &&
+                                this.state.newUser.password !== "") {
+                                console.log(this.state.newUser)
+                                this.props.createUser(this.state.newUser).then(
+                                    this.setState({
+                                        newUser: {}
+                                    })
+                                )
+                            }
                         }}>Create User</div>
                 </form>
             </div>

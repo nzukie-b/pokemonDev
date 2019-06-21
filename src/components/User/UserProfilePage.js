@@ -79,9 +79,9 @@ export default class UserProfilePage extends React.Component {
                                 onChange={e => this.props.user.lastName = e.target.value} />
                         </div>
                         <div className="mb-2">
-                            <label htmlFor="type">Last Name</label>
+                            <label htmlFor="type">Role</label>
                             <select
-                                placeholder="Last Name"
+                                placeholder="Collector"
                                 className="form-control"
                                 id="type"
                                 defaultValue={this.props.user.role}
@@ -130,9 +130,9 @@ export default class UserProfilePage extends React.Component {
                                 onChange={e => this.props.profileUser.lastName = e.target.value} readOnly />
                         </div>
                         <div className="mb-2">
-                            <label htmlFor="type">Last Name</label>
+                            <label htmlFor="type">Role</label>
                             <select disabled
-                                placeholder="Last Name"
+                                placeholder="Collector"
                                 className="form-control"
                                 defaultValue={this.props.profileUser.role}
                                 onChange={e => this.props.profileUser.role = e.target.value}>

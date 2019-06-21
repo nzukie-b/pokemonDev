@@ -3,6 +3,7 @@ import service from '../services/UserService'
 import UserProfilePage from "../components/User/UserProfilePage";
 import LoginPopup from "../components/LoginPopup";
 import UserList from '../components/User/UserList';
+import Register from '../components/User/Register';
 
 const userService = service.getInstance();
 
@@ -89,4 +90,9 @@ const UserListContainer = connect(
     propertyToDispatchMapper
 )(UserList)
 
-export {LoggedInUserContainer, UserContainer, UserListContainer}
+const UserRegisterContainer = connect(
+    stateToPropertyMapper,
+    propertyToDispatchMapper
+)(Register)
+
+export {LoggedInUserContainer, UserContainer, UserListContainer, UserRegisterContainer}

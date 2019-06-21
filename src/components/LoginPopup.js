@@ -32,16 +32,18 @@ export default class LoginPopup extends React.Component {
     loginLogoutBtn = () => {
         if (!this.props.loggedIn) {
             return (
-                <div>
+                <div className="row">
+                    <Link className="ml-2 nav-item nav-link" to={`/register`}>
+                        Sign Up
+                        </Link>
                     <div className="btn btn-primary" onClick={this.handleShow}>
-                        Login
-                </div>
+                        Login </div>
                 </div>
             )
         } else {
             return (
                 <div className="row">
-                    <Link className="ml-1 nav-item nav-link" to={`/profile/${this.props.user.username}`}
+                    <Link className="ml-2 nav-item nav-link" to={`/profile/${this.props.user.username}`}
                         onClick={() => this.props.findUserProfile(this.props.user.id)}>
                         Your Profile
                         </Link>

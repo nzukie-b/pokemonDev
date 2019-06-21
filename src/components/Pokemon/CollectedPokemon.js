@@ -52,7 +52,7 @@ class CollectedPokemon extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="container-fluid">
-                    <div className="">
+                    <div>
                         <h2>Collected Pokemon</h2>
                         <div className="container-fluid row">
                             {this.state.collectedPokemon.map((poke) => {
@@ -71,16 +71,16 @@ class CollectedPokemon extends React.Component {
                             }
                         </div>
                     </div>
-                    <div className="row mt-2 mx-1 px-1 container-fluid">
-                        {this.props.user.role === "TRAINER" &&
+                    {this.props.user.role === "TRAINER" &&
                             <h2>Team Pokemon</h2>}
+                    <div className="">
                         {/*this.areYouACollector*/}
-                        <div className="container-fluid row">
+                        <div className="container-fluid row mt-2">
                             {this.state.team.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.pokemonAPI.name
                                 return (
-                                    <div className="col-12 col-md-4 col-xl-2 pb-2" key={poke.pokemonAPI.id}>
+                                    <div className="col-12 col-md-4 col-xl-2 pb-1" key={poke.pokemonAPI.id}>
 
                                         <div>
                                             <div className="card">

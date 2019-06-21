@@ -14,7 +14,7 @@ export default class UserList extends React.Component {
                 <h1 className="mb-1">Users</h1>
                 {this.props.users.map(user => {
                         return (
-                            <div className="mb-2">
+                            <div className="my-3 border rounded p-2">
                                 <Link className="btn btn-block btn-outline-primary"
                                       to={`/profile/${user.username}`}
                                       onClick={() => this.props.findUserProfile(user.id)}>

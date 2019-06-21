@@ -8,7 +8,6 @@ export default class TeamPage extends React.Component {
         if (this.props.loggedIn) {
             this.props.findTeam(this.props.user.id);
             console.log("Two " + this.props.team)
-            this.props.updateApiTeam(this.props.team, this.props.user.id)
         }
     }
 

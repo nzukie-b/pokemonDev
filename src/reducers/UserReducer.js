@@ -6,12 +6,14 @@ const userReducer = (state = {
         password: "batmobile",
         firstName: "bruce",
         lastName: "Wayne",
-        collectedPokemon:[],
-        team:[]
+        collectedPokemon: [],
+        team: []
     },
     loggedIn: false,
-    profileUser: {collectedPokemon:[],
-    team:[]}
+    profileUser: {
+        collectedPokemon: [],
+        team: []
+    }
 }, action) => {
     switch (action.type) {
         case "FIND_ALL_USERS":
@@ -44,6 +46,63 @@ const userReducer = (state = {
             }
         case "IS_LOGGED_IN":
             return state;
+        case "FIND_TEAM":
+            console.log(action.team)
+            return {
+                ...state,
+                user: {
+                    id: state.user.id,
+                    username: state.user.username,
+                    password: state.user.password,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    collectedPokemon: state.user.collectedPokemon,
+                    role: state.user.role,
+                    team: action.team
+                }
+            }
+        case "ADD_POKEMON_TO_TEAM":
+            return {
+                ...state,
+                user: {
+                    id: state.user.id,
+                    username: state.user.username,
+                    password: state.user.password,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    collectedPokemon: state.user.collectedPokemon,
+                    role: state.user.role,
+                    team: action.team
+                }
+            }
+        case "REMOVE_POKEMON_FROM_TEAM":
+            return {
+                ...state,
+                user: {
+                    id: state.user.id,
+                    username: state.user.username,
+                    password: state.user.password,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    collectedPokemon: state.user.collectedPokemon,
+                    role: state.user.role,
+                    team: action.team
+                }
+            }
+        case "UPDATE_POKEMON_ON_TEAM":
+            return {
+                ...state,
+                user: {
+                    id: state.user.id,
+                    username: state.user.username,
+                    password: state.user.password,
+                    firstName: state.user.firstName,
+                    lastName: state.user.lastName,
+                    collectedPokemon: state.user.collectedPokemon,
+                    role: state.user.role,
+                    team: action.team
+                }
+            }
         default:
             return state;
 

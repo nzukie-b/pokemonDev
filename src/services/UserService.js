@@ -59,9 +59,17 @@ export default class UserService {
                     'content-type': 'application/json'
                 }
             })
-    collectPokemon = (pokeId, userId) =>
+    collectPokemon = (pokeId, userId, poke) =>
         fetch(serverAdress + `/api/users/${userId}/pokemon/${pokeId}`,
             {
+                body: JSON.stringify(
+                    {
+                        name: poke.name,
+                        frontSprite: poke.sprites.front_default
+                    }),
+                headers: {
+                    'content-type': 'application/json'
+                },
                 method: 'PUT',
             })
     findUserByUserName = (username) =>

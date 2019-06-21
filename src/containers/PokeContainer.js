@@ -35,8 +35,8 @@ const propertyToDispatchMapper = dispatch => ({
             filterBy: search
         })
     },
-    addPokemonToUser: (pokeId, userId) => {
-        userService.collectPokemon(pokeId,userId).then(
+    addPokemonToUser: (pokeId, userId, poke) => {
+        userService.collectPokemon(pokeId,userId, poke).then(
             user => dispatch({
                 type: "ADD_POKEMON_TO_USER",
                 user: user

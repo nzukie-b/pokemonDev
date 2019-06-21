@@ -9,44 +9,11 @@ const pokeService = pService.getInstance();
 class CollectedPokemon extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            collectedPokemon: [],
-            team: []
-        }
     }
 
 
     componentDidMount = () => {
-        if (this.props.loggedIn) {
-            this.props.collectedPokemon.map((poke) => {
-                pokeService.findPokemon(poke.id)
-                    .then(pokeInfo => {
-                        var newCollection = this.state.collectedPokemon.slice();
-                        newCollection.push(pokeInfo);
-                        this.setState({
-                            collectedPokemon: newCollection,
-                            team: this.state.team
-                        })
-                    })
-            })
-            if (this.props.user.role === "TRAINER") {
-                this.props.user.team.map((poke) => {
-                    pokeService.findPokemon(poke.pokeId.id)
-                        .then(pokeInfo => {
-                            var newCollection = this.state.team.slice();
-                            var superPokemon = {
-                                pokemonTeam: poke,
-                                pokemonAPI: pokeInfo
-                            }
-                            newCollection.push(superPokemon);
-                            this.setState({
-                                collectedPokemon: this.state.collectedPokemon,
-                                team: newCollection
-                            })
-                        })
-                })
-            }
-        }
+
     }
 
     render() {
@@ -56,7 +23,7 @@ class CollectedPokemon extends React.Component {
                     <div>
                         <h2>Collected Pokemon</h2>
                         <div className="container-fluid row">
-                            {this.state.collectedPokemon.map((poke) => {
+                            {this.props.user.collectedPokemon.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
@@ -77,33 +44,33 @@ class CollectedPokemon extends React.Component {
                     <div className="">
                         {/*this.areYouACollector*/}
                         <div className="container-fluid row mt-2">
-                            {this.state.team.map((poke) => {
+                            {this.props.user.team.map((poke) => {
                                 console.log(poke)
-                                const linkVar = "/pokemon/" + poke.pokemonAPI.name
+                                const linkVar = "/pokemon/" + poke.pokeId.name
                                 return (
-                                    <div className="col-12 col-md-4 col-xl-2 pb-1" key={poke.pokemonAPI.id}>
+                                    <div className="col-12 col-md-4 col-xl-2 pb-1" key={poke.id}>
 
                                         <div>
                                             <div className="card">
                                                 <img className="card-img-top img-fluid"
-                                                    src={poke.pokemonAPI.sprites.front_default} />
+                                                    src={poke.pokeId.frontSprite} />
                                                 <div className="card-body px-2">
                                                     <h5 className="card-title text-center">
-                                                        {poke.pokemonAPI.name.charAt(0).toUpperCase() + poke.pokemonAPI.name.slice(1)}
+                                                        {poke.pokeId.name.charAt(0).toUpperCase() + poke.pokeId.name.slice(1)}
                                                     </h5>
-                                                    <p className="card-text mb-2 text-center">{"level " + poke.pokemonTeam.level}</p>
+                                                    <p className="card-text mb-2 text-center">{"level " + poke.level}</p>
                                                     <Link className="btn btn-outline-info btn-block"
                                                         to={linkVar}>
                                                         Info
                                                     </Link>
                                                     {this.props.training && <div className="btn btn-warning"
-                                                        onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
+                                                        onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.id)}>
                                                         Remove
                                                     </div>}
                                                     {this.props.training && <div className="btn btn-warning"
                                                         onClick={() => {
-                                                            poke.pokemonTeam.level++
-                                                            this.props.updatePokemonOnTeam(this.props.user.id, poke.pokemonTeam)
+                                                            poke.level++
+                                                            this.props.updatePokemonOnTeam(this.props.user.id, poke)
                                                         }}>
                                                         Train
                                                     </div>}

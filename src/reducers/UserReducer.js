@@ -10,7 +10,8 @@ const userReducer = (state = {
         team:[]
     },
     loggedIn: false,
-    profileUser: {collectedPokemon:[]}
+    profileUser: {collectedPokemon:[],
+    team:[]}
 }, action) => {
     switch (action.type) {
         case "FIND_ALL_USERS":

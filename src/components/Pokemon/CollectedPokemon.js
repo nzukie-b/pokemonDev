@@ -89,14 +89,21 @@ class CollectedPokemon extends React.Component {
                                                     <h5 className="card-title">
                                                         {poke.pokemonAPI.name}
                                                     </h5>
+                                                    <p className="card-body">{"level " + poke.pokemonTeam.level}</p>
                                                     <Link className="btn btn-outline-info btn-block"
                                                           to={linkVar}>
                                                         Info
                                                     </Link>
-                                                    <div className="btn btn-warning"
+                                                    {this.props.training &&<div className="btn btn-warning"
                                                          onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
                                                         Remove
-                                                    </div>
+                                                    </div>}
+                                                    {this.props.training &&<div className="btn btn-warning"
+                                                                                onClick={() => {
+                                                                                    poke.pokemonTeam.level ++
+                                                                                    this.props.updatePokemonOnTeam(this.props.user.id, poke.pokemonTeam)}}>
+                                                        Train
+                                                    </div>}
                                                 </div>
                                             </div>
                                         </div>

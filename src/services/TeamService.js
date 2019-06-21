@@ -1,4 +1,4 @@
-const serverAdress = "http://localhost:8080"
+const serverAdress = "https://s1-project-server.herokuapp.com/"
 
 export default class TeamService {
     static myInstance = null;

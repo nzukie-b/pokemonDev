@@ -70,17 +70,27 @@ class CollectedPokemon extends React.Component {
                     <div className="row mt-2 container-fluid">
                         <h2>Team Pokemon</h2>
                         {/*this.areYouACollector*/}
-                        <div className="container-fluid">
+                        <div className="container-fluid row">
                             {this.state.team.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
-                                    <div className="col-2 mb-1 px-0 mr-1" key={poke.id}>
-                                        <Link className="btn btn-outline-info btn-block"
-                                              to={linkVar}>
-                                            {/* MIGHT NEED THE ONCLICK FROM SEARCH.JS*/}
-                                            {poke.name}
-                                        </Link>
+                                    <div className="" key={poke.id}>
+
+                                        <div className="col">
+                                            <div className="card" styles={{width: '18rem'}}>
+                                                <img className="card-img-top"
+                                                     src={poke.sprites.front_default}/>
+                                                <div className="card-body">
+                                                    <h5 className="card-title">
+                                                        {poke.name}
+                                                    </h5>
+                                                    <Link className="btn btn-outline-info btn-block"
+                                                          to={linkVar}>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 )
                             })}

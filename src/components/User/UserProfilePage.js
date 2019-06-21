@@ -67,6 +67,7 @@ export default class UserProfilePage extends React.Component {
                                 id="first"
                                 defaultValue={this.props.user.firstName}
                                 onChange={e => this.props.user.firstName = e.target.value} />
+
                         </div>
                         <div className="mb-2">
                             <label htmlFor="last">Last Name</label>

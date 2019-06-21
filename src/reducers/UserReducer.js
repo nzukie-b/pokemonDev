@@ -5,7 +5,9 @@ const userReducer = (state = {
         username: "batman",
         password: "batmobile",
         firstName: "bruce",
-        lastName: "Wayne"
+        lastName: "Wayne",
+        collectedPokemon:[],
+        team:[]
     },
     loggedIn: false,
     profileUser: {collectedPokemon:[]}

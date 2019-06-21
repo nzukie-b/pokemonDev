@@ -7,10 +7,17 @@ import CollectedPokemon from "../Pokemon/CollectedPokemon";
 export default class UserProfilePage extends React.Component {
     constructor(props) {
         super(props)
-
+        const pathname = window.location.pathname
+        const paths = pathname.split('/')
+        const username = paths[2]
+        console.log(paths[2])
+        // this.props.updateProfileUserByUserName(username)
         if (this.props.loggedIn) {
             this.props.updateCurrentUser(this.props.user.id)
         }
+        // } else {
+        //     this.props.updateProfileUserByUserName(username)
+        // }
     }
 
 

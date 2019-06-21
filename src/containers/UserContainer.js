@@ -32,10 +32,10 @@ const propertyToDispatchMapper = dispatch => ({
     },
     findUserProfile: (userId) => {
         userService.findUserById(userId)
-        .then(user => dispatch({
-            type: "UPDATE_PROFILE_USER",
-            profileUser: user
-        }))
+            .then(user => dispatch({
+                type: "UPDATE_PROFILE_USER",
+                profileUser: user
+            }))
     },
     createUser: (user) =>
         userService.createUser(user)
@@ -51,7 +51,7 @@ const propertyToDispatchMapper = dispatch => ({
             })),
     logIn: (userName, password) => {
         userService.getUserByUserNameAndPassword(
-                userName, password)
+            userName, password)
             .then(user => dispatch({
                 type: "LOG_IN",
                 user: user,
@@ -63,7 +63,7 @@ const propertyToDispatchMapper = dispatch => ({
             type: "LOG_OUT",
         })
     },
-    updateCurrentUser: (userId)=>{
+    updateCurrentUser: (userId) => {
         userService
             .findUserById(
                 userId)
@@ -72,6 +72,12 @@ const propertyToDispatchMapper = dispatch => ({
                 user: user,
                 loggedIn: true
             }))
+    },
+    updateProfileUserByUserName: (username) => {
+        userService.findUserByUserName(username).then(user => dispatch({
+            type: "UPDATE_PROFILE_USER",
+            profileUser: user
+        }))
     }
 })
 

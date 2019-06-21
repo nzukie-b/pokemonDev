@@ -64,6 +64,12 @@ export default class UserService {
             {
                 method: 'PUT',
             })
+    findUserByUserName = (username) =>
+        fetch(serverAdress + `/api/users/username/${username}`,
+            {
+                method: 'Get',
+            })
+
     // findPokemonCollection = (userId) => {
     //     fetch(serverAdress + `/api/users/${userId}/pokemon`,
     //         {

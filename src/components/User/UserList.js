@@ -45,7 +45,7 @@ export default class UserList extends React.Component {
                     <Link className="btn btn-block btn-outline-primary"
                         to={`/profile/${this.props.user.username}`}
                         onClick={() => this.props.findUserProfile(this.props.user.id)}>
-                        User Profile: {this.props.user.username}
+                        {"User Profile:" + this.props.user.username}
                     </Link>
                     <CollectedPokemon loggedIn={true}
                         user={this.props.user}

@@ -19,7 +19,8 @@ class Register extends React.Component {
         if (this.state.newUser.username !== "" &&
             this.state.newUser.password !== "") {
             this.props.createUser(this.state.newUser)
-            this.props.logIn(this.state.newUser.username, this.state.newUser.password)
+            this.props.findAllUsers()
+            // this.props.logIn(this.state.newUser.username, this.state.newUser.password)
             this.setState({
                 newUser: {}
             })

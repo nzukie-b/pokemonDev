@@ -77,7 +77,7 @@ export default class Register extends React.Component {
                                     newUser: {}
                                 })
                             )
-                            
+
                         }}>Create User
                     </div>
                 </form>

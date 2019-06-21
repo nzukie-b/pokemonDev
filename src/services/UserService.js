@@ -28,8 +28,7 @@ export default class UserService {
 
     getUserByUserNameAndPassword = (userName, password) =>
         fetch(
-            serverAdress +
-            `/api/users/username/${userName}/password/${password}`,
+            serverAdress + `/api/users/username/${userName}/password/${password}`,
             {
                 method: 'Get',
             })

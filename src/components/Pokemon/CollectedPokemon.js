@@ -49,7 +49,6 @@ class CollectedPokemon extends React.Component {
                                 const linkVar = "/pokemon/" + poke.pokeId.name
                                 return (
                                     <div className="col-12 col-md-4 col-xl-2 pb-1" key={poke.id}>
-
                                         <div>
                                             <div className="card">
                                                 <img className="card-img-top img-fluid"

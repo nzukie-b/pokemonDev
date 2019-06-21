@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ export default class Register extends React.Component {
             }
         }
     }
+
     render() {
         return (
             <div className="container-fluid">
@@ -22,38 +23,36 @@ export default class Register extends React.Component {
                     <div>
                         <label htmlFor="userName">Username</label>
                         <input type="text"
-                            placeholder="Username"
-                            className="form-control"
-                            id="userName"
-                            onChange={e => this.state.newUser.username = e.target.value} required />
-                        <div class="invalid-feedback">
-                            Please choose a username.
-                            </div>
+                               placeholder="Username"
+                               className="form-control"
+                               id="userName"
+                               onChange={e => this.state.newUser.username = e.target.value} required/>
+
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
                         <input type="password"
-                            placeholder="password"
-                            className="form-control"
-                            id="password"
-                            onChange={e => this.state.newUser.password = e.target.value} required />
+                               placeholder="password"
+                               className="form-control"
+                               id="password"
+                               onChange={e => this.state.newUser.password = e.target.value} required/>
                     </div>
                     <div>
                         <label htmlFor="first">First Name</label>
                         <input type="text"
-                            placeholder="First Name"
-                            className="form-control"
-                            id="first"
-                            onChange={e => this.state.newUser.firstName = e.target.value} required />
+                               placeholder="First Name"
+                               className="form-control"
+                               id="first"
+                               onChange={e => this.state.newUser.firstName = e.target.value} required/>
 
                     </div>
                     <div className="mb-2">
                         <label htmlFor="last">Last Name</label>
                         <input type="text"
-                            placeholder="Last Name"
-                            className="form-control"
-                            id="last"
-                            onChange={e => this.state.newUser.lastName = e.target.value} required />
+                               placeholder="Last Name"
+                               className="form-control"
+                               id="last"
+                               onChange={e => this.state.newUser.lastName = e.target.value} required/>
                     </div>
                     <div className="mb-2">
                         <label htmlFor="type">Role</label>
@@ -71,16 +70,16 @@ export default class Register extends React.Component {
                         className="btn btn-block btn-success"
                         onClick={(e) => {
                             e.preventDefault();
-                            if (this.state.newUser.username !== "" &&
-                                this.state.newUser.password !== "") {
-                                console.log(this.state.newUser)
-                                this.props.createUser(this.state.newUser).then(
-                                    this.setState({
-                                        newUser: {}
-                                    })
-                                )
-                            }
-                        }}>Create User</div>
+
+                            console.log(this.state.newUser)
+                            this.props.createUser(this.state.newUser).then(
+                                this.setState({
+                                    newUser: {}
+                                })
+                            )
+                            
+                        }}>Create User
+                    </div>
                 </form>
             </div>
         )

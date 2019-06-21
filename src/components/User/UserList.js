@@ -60,9 +60,9 @@ export default class UserList extends React.Component {
 
     showTopTenTeams = () => {
         var allUsers = this.props.users.sort((user1, user2) =>
-            this.getTeamLevelTotal(user2) < this.getTeamLevelTotal(user1))
+            this.getTeamLevelTotal(user2) > this.getTeamLevelTotal(user1))
         if (allUsers.length > 10) {
-            allUsers = allUsers.splice(0, 10 - allUsers.lengths)
+            allUsers = allUsers.splice(10)
         }
         return allUsers.map(user => {
             return (

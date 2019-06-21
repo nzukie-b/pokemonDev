@@ -116,7 +116,7 @@ export default class UserProfilePage extends React.Component {
                             <input type="text"
                                    placeholder="Username"
                                    className="form-control"
-                                   defaultValue={this.props.profileUser.username}
+                                   value={this.props.profileUser.username}
                                    onChange={e => this.props.profileUser.username = e.target.value} readOnly/>
                         </div>
                         <div>
@@ -124,7 +124,7 @@ export default class UserProfilePage extends React.Component {
                             <input type="text"
                                    placeholder="First Name"
                                    className="form-control"
-                                   defaultValue={this.props.profileUser.firstName}
+                                   value={this.props.profileUser.firstName}
                                    onChange={e => this.props.profileUser.firstName = e.target.value} readOnly/>
 
                         </div>
@@ -133,7 +133,7 @@ export default class UserProfilePage extends React.Component {
                             <input type="text"
                                    placeholder="Last Name"
                                    className="form-control"
-                                   defaultValue={this.props.profileUser.lastName}
+                                   value={this.props.profileUser.lastName}
                                    onChange={e => this.props.profileUser.lastName = e.target.value} readOnly/>
                         </div>
                         <div className="mb-2">
@@ -141,7 +141,7 @@ export default class UserProfilePage extends React.Component {
                             <select disabled
                                     placeholder="Collector"
                                     className="form-control"
-                                    defaultValue={this.props.profileUser.role}
+                                    value={this.props.profileUser.role}
                                     onChange={e => this.props.profileUser.role = e.target.value}>
                                 <option value="COLLECTOR">Collector</option>
                                 <option value="TRAINER">Trainer</option>

@@ -15,7 +15,8 @@ class CollectedPokemon extends React.Component {
         }
     }
 
-    componentWillMount = () => {
+
+    componentDidMount = () => {
         if (this.props.loggedIn) {
             this.props.collectedPokemon.map((poke) => {
                 pokeService.findPokemon(poke.id)

@@ -14,7 +14,7 @@ const Search = ({findPokemon, filterAllByPokemon, filteredPokemon}) => {
                 {filteredPokemon.map((pok) => {
                         const linkVar = "/pokemon/" + pok.name
                         return (
-                            <div className="col-2 mb-1 px-1" key={pok.name}>
+                            <div className="col-12 col-md-2 col-sm-6 mb-1 px-1" key={pok.name}>
                                 <Link className="btn btn-outline-info btn-block"
                                       to={linkVar}
                                       onClick={() => {

@@ -10,10 +10,11 @@ export default class UserList extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container">
+                <h1 className="mb-1">Users</h1>
                 {this.props.users.map(user => {
                         return (
-                            <div>
+                            <div className="mb-2">
                                 <Link className="btn btn-block btn-outline-primary"
                                       to={`/profile/${user.username}`}
                                       onClick={() => this.props.findUserProfile(user.id)}>
@@ -23,8 +24,9 @@ export default class UserList extends React.Component {
                                                   user={user}
                                                   collectedPokemon={user.collectedPokemon}
                                                   training={false}
-
-                                /></div>
+                                />
+                                <br></br>
+                                </div>
                         )
                     }
                 )}

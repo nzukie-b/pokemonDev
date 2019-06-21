@@ -47,7 +47,7 @@ export default class LoginPopup extends React.Component {
                         onClick={() => this.props.findUserProfile(this.props.user.id)}>
                         Your Profile
                         </Link>
-                    <Link to="/" className="btn btn-primary" onClick={() => this.props.logOut()}>
+                    <Link to="/home" className="btn btn-primary" onClick={() => this.props.logOut()}>
                         Logout
                     </Link>
                 </div>
@@ -87,7 +87,7 @@ export default class LoginPopup extends React.Component {
                         <Button variant="secondary" onClick={() => this.handleClose()}>
                             Close
                         </Button>
-                        <Link className="btn btn-primary" to="/" onClick={() => this.handleLogin()}>
+                        <Link className="btn btn-primary" to="/home" onClick={() => this.handleLogin()}>
                             Login
                         </Link>
                     </Modal.Footer>

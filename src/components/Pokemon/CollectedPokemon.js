@@ -59,7 +59,7 @@ class CollectedPokemon extends React.Component {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
-                                    <div className="col mb-1 px-0 mr-1" key={poke.id}>
+                                    <div className="col-12 col-md-2 mb-1 px-0 mr-1" key={poke.id}>
                                         <CollectedPokemonBtns linkVar={linkVar}
                                                               poke={poke}
                                                               training={this.props.training}
@@ -72,7 +72,8 @@ class CollectedPokemon extends React.Component {
                         </div>
                     </div>
                     <div className="row mt-2 container-fluid">
-                        <h2>Team Pokemon</h2>
+                        {this.props.user.role === "TRAINER" &&
+                        <h2>Team Pokemon</h2>}
                         {/*this.areYouACollector*/}
                         <div className="container-fluid row">
                             {this.state.team.map((poke) => {

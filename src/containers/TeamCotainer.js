@@ -1,11 +1,14 @@
 import {connect} from 'react-redux'
 import service from '../services/TeamService'
 import pService from '../services/PokeAPIService'
+import uservice from '../services/UserService'
+
 import TeamPage from "../components/Training/TeamPage";
 
 
 const teamService = service.getInstance();
 const pokeService = pService.getInstance();
+const userService = uservice.getInstance();
 
 
 const stateToPropertyMapper = state => ({

@@ -33,7 +33,11 @@ class CollectedPokemon extends React.Component {
                     pokeService.findPokemon(poke.pokeId.id)
                         .then(pokeInfo => {
                             var newCollection = this.state.team.slice();
-                            newCollection.push(pokeInfo);
+                            var superPokemon = {
+                                pokemonTeam: poke,
+                                pokemonAPI: pokeInfo
+                            }
+                            newCollection.push(superPokemon);
                             this.setState({
                                 collectedPokemon: this.state.collectedPokemon,
                                 team: newCollection
@@ -47,15 +51,15 @@ class CollectedPokemon extends React.Component {
     render() {
         if (this.props.loggedIn) {
             return (
-                <div className="row mt-2 container-fluid">
-                    <div className="row mt-2 container-fluid">
+                <div className="container-fluid">
+                    <div className="">
                         <h2>Collected Pokemon</h2>
-                        <div className="container-fluid">
+                        <div className="container-fluid row">
                             {this.state.collectedPokemon.map((poke) => {
                                 console.log(poke)
                                 const linkVar = "/pokemon/" + poke.name
                                 return (
-                                    <div className="col-2 mb-1 px-0 mr-1" key={poke.id}>
+                                    <div className="col mb-1 px-0 mr-1" key={poke.id}>
                                         <CollectedPokemonBtns linkVar={linkVar}
                                                               poke={poke}
                                                               training={this.props.training}
@@ -70,17 +74,39 @@ class CollectedPokemon extends React.Component {
                     <div className="row mt-2 container-fluid">
                         <h2>Team Pokemon</h2>
                         {/*this.areYouACollector*/}
-                        <div className="container-fluid">
+                        <div className="container-fluid row">
                             {this.state.team.map((poke) => {
                                 console.log(poke)
-                                const linkVar = "/pokemon/" + poke.name
+                                const linkVar = "/pokemon/" + poke.pokemonAPI.name
                                 return (
-                                    <div className="col-2 mb-1 px-0 mr-1" key={poke.id}>
-                                        <Link className="btn btn-outline-info btn-block"
-                                              to={linkVar}>
-                                            {/* MIGHT NEED THE ONCLICK FROM SEARCH.JS*/}
-                                            {poke.name}
-                                        </Link>
+                                    <div className="" key={poke.pokemonAPI.id}>
+
+                                        <div className="col">
+                                            <div className="card" styles={{width: '18rem'}}>
+                                                <img className="card-img-top"
+                                                     src={poke.pokemonAPI.sprites.front_default}/>
+                                                <div className="card-body">
+                                                    <h5 className="card-title">
+                                                        {poke.pokemonAPI.name}
+                                                    </h5>
+                                                    <p className="card-body">{"level " + poke.pokemonTeam.level}</p>
+                                                    <Link className="btn btn-outline-info btn-block"
+                                                          to={linkVar}>
+                                                        Info
+                                                    </Link>
+                                                    {this.props.training &&<div className="btn btn-warning"
+                                                         onClick={() => this.props.removePokemonFromTeam(this.props.user.id, poke.pokemonTeam.id)}>
+                                                        Remove
+                                                    </div>}
+                                                    {this.props.training &&<div className="btn btn-warning"
+                                                                                onClick={() => {
+                                                                                    poke.pokemonTeam.level ++
+                                                                                    this.props.updatePokemonOnTeam(this.props.user.id, poke.pokemonTeam)}}>
+                                                        Train
+                                                    </div>}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 )
                             })}

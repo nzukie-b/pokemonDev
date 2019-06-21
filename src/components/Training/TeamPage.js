@@ -28,7 +28,9 @@ export default class TeamPage extends React.Component {
                                       user={this.props.user}
                                       collectedPokemon={this.props.user.collectedPokemon}
                                       training={true}
-                                      addPokemonToTeam={this.props.addPokemonToTeam}/>
+                                      addPokemonToTeam={this.props.addPokemonToTeam}
+                                      removePokemonFromTeam={this.props.removePokemonFromTeam}
+                                      updatePokemonOnTeam={this.props.updatePokemonOnTeam}/>
                 </div>)
         }
     }

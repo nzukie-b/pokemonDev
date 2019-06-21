@@ -24,7 +24,7 @@ export default class UserList extends React.Component {
     getTeamLevelTotal = (user) => {
         var levelTotal = 0;
         user.team.map(poke => {
-            levelTotal += parseInt(poke.level)
+            levelTotal += poke.level
         })
         return levelTotal;
     }
@@ -60,7 +60,7 @@ export default class UserList extends React.Component {
 
     showTopTenTeams = () => {
         var allUsers = this.props.users.sort((user1, user2) =>
-            this.getTeamLevelTotal(user2) > this.getTeamLevelTotal(user1))
+            this.getTeamLevelTotal(user2) - this.getTeamLevelTotal(user1))
         if (allUsers.length > 10) {
             allUsers = allUsers.splice(10)
         }

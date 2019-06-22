@@ -8,6 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #4E5972
+  
 }
 
 code {
@@ -18,4 +20,5 @@ code {
 
 div#root {
   font-family: 'IBM Plex Sans', sans-serif;
+  
 }

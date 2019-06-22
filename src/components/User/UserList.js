@@ -54,6 +54,7 @@ export default class UserList extends React.Component {
                                       user={this.props.user}
                                       collectedPokemon={this.props.user.collectedPokemon}
                                       training={false}
+                                      userList={false}
                     />
                     <br></br>
                 </div>
@@ -76,6 +77,7 @@ export default class UserList extends React.Component {
                                           user={user}
                                           collectedPokemon={user.collectedPokemon}
                                           training={false}
+                                          userList={true}
                         />
                         <br></br>
                     </div>

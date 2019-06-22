@@ -64,7 +64,7 @@ export default class UserList extends React.Component {
     showTopTenTeams = () => {
         return this.props.users.sort((user1, user2) =>
             this.getTeamLevelTotal(user2) - this.getTeamLevelTotal(user1))
-            .slice(0,10).map(user => {
+            .slice(0,5).map(user => {
                 return (
                     <div className="my-3 border rounded p-2">
                         <Link className="btn btn-block btn-outline-primary"
@@ -91,7 +91,7 @@ export default class UserList extends React.Component {
                     {this.showTeamLevelTotal()}
                     {this.showActiveUserInfo()}
                 </div>
-                <h1 className="mb-1">Top 10 Users</h1>
+                <h1 className="mb-1">Top 5 Users</h1>
                 {this.showTopTenTeams()}
             </div>
         )

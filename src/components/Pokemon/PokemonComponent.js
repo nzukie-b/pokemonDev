@@ -28,7 +28,9 @@ export default class PokemonComponent extends React.Component {
                                    loggedIn={this.props.loggedIn}
                                    addPokemonToUser={this.props.addPokemonToUser}
                                    userId={this.props.user.id}
-                                   findPokemon={this.props.findPokemon}/>
+                                   findPokemon={this.props.findPokemon}
+                                   findPokeChildren={this.props.findPokeChildren}
+                                   pokeChildren={this.props.pokeChildren}/>
                            }/>
                 </div>
             </div>

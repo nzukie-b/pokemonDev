@@ -10321,7 +10321,8 @@ const pokeReducer = (state = {
         "weight": 69
     },
     allPokemon: [],
-    filteredPokemon: []
+    filteredPokemon: [],
+    pokeChildren: []
 }, action) => {
     switch (action.type) {
         case "FIND_POKEMON":
@@ -10345,6 +10346,11 @@ const pokeReducer = (state = {
             return {
                 ...state,
                 user: action.user
+            }
+        case "FIND_POKE_CHILDREN":
+            return {
+                ...state,
+                pokeChildren: action.pokeChildren
             }
         default:
             return state;

@@ -84,9 +84,8 @@ class Register extends React.Component {
                     </div>
                     <div
                         className="btn btn-block btn-success"
-                        onClick={
-                            this.handleSubmit
-                        }>Create User
+                        onClick={this.handleSubmit}>
+                        Create User
                     </div>
                 </form>
             </div>

@@ -19,6 +19,7 @@ const Search = ({findPokemon, filterAllByPokemon, filteredPokemon}) => {
                                       to={linkVar}
                                       onClick={() => {
                                           findPokemon(pok.name)
+                                          filterAllByPokemon("Placeholder to clear search results");
                                       }}>
                                     {pok.name.charAt(0).toUpperCase() + pok.name.slice(1)}
                                 </Link>

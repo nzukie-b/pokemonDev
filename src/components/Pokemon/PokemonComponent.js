@@ -14,7 +14,6 @@ export default class PokemonComponent extends React.Component {
         return (
             <div>
                 <div className="container">
-                    {/* {this.redirectToSearch()} */}
                     <Route path="/search"
                            render={() =>
                                <Search

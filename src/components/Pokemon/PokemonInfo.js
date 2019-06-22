@@ -1,11 +1,8 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-
-
-
-export default class PokemonInfo extends React.Component {
-    constructor(props){
+class PokemonInfo extends React.Component {
+    constructor(props) {
         super(props);
         const pathname = window.location.pathname
         const paths = pathname.split('/')
@@ -13,6 +10,11 @@ export default class PokemonInfo extends React.Component {
         console.log(paths[2])
         this.props.findPokemon(pokem)
     }
+
+    redirectBack = () => {
+        this.props.history.push("/search")
+    }
+
     render() {
         return (
             <div>
@@ -22,7 +24,7 @@ export default class PokemonInfo extends React.Component {
                     <ul>
                         {Object.values(this.props.pokemon.sprites).reverse()
                             .map((img) =>
-                                <img src={img} alt=""/>
+                                <img src={img} alt="" />
                             )}
                     </ul>
                 </div>
@@ -60,19 +62,24 @@ export default class PokemonInfo extends React.Component {
                         {this.props.pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
                     </ul>
                 </div>
-                {collectBtn(this.props.loggedIn, this.props.addPokemonToUser, this.props.pokemon, this.props.userId)}
+                {collectBtn(this.props.loggedIn, this.props.addPokemonToUser, this.props.pokemon, this.props.userId, this.redirectBack)}
                 <Link className="btn btn-block btn-outline-secondary" to="/search">Back</Link>
             </div>
         )
     }
 }
 
-const collectBtn = (loggedIn, addPokemonToUser, pokemon, userId) => {
+const collectBtn = (loggedIn, addPokemonToUser, pokemon, userId, redirectBack) => {
     if (loggedIn) {
         return (
             <div className="btn btn-outline-dark btn-block"
-                 onClick={() => {
-                     addPokemonToUser(pokemon.id, userId, pokemon)
-                 }}>Collect</div>)
+                onClick={() => {
+                    addPokemonToUser(pokemon.id, userId, pokemon)
+                    alert(pokemon.name.charAt(0).toUpperCase() +
+                        pokemon.name.slice(1) + ' collected.');
+                    redirectBack();
+                }}>Collect</div>
+        )
     }
 }
+export default withRouter(PokemonInfo)

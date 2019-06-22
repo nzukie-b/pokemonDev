@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Row, Col } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 
 export default class LoginPopup extends React.Component {
@@ -36,7 +36,7 @@ export default class LoginPopup extends React.Component {
                     <Link className="ml-2 nav-item nav-link" to={`/register`}>
                         Sign Up
                         </Link>
-                    <div className="btn btn-primary" onClick={this.handleShow}>
+                    <div className="ml-1 btn btn-primary nav-item" id="loginBtn" onClick={this.handleShow}>
                         Login </div>
                 </div>
             )
@@ -47,7 +47,7 @@ export default class LoginPopup extends React.Component {
                         onClick={() => this.props.findUserProfile(this.props.user.id)}>
                         Your Profile
                         </Link>
-                    <Link to="/home" className="btn btn-primary" onClick={() => this.props.logOut()}>
+                    <Link to="/home" className="ml-1 btn btn-primary nav-item" onClick={() => this.props.logOut()}>
                         Logout
                     </Link>
                 </div>
@@ -58,7 +58,6 @@ export default class LoginPopup extends React.Component {
     render() {
         return (
             <div>
-
                 {this.loginLogoutBtn()}
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
@@ -76,11 +75,10 @@ export default class LoginPopup extends React.Component {
                         <div>
                             <label htmlFor="password">Password</label>
                             <input type="password"
-                                placeholder="pass"
+                                placeholder="password"
                                 className="form-control"
                                 id="password"
                                 onChange={e => this.password = e.target.value} />
-
                         </div>
                     </Modal.Body>
                     <Modal.Footer>

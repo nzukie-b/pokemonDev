@@ -12,25 +12,31 @@ export default class TeamPage extends React.Component {
         }
     }
 
+    clickLogin = () => {
+        document.getElementById('loginBtn').click();
+    }
+
     render() {
         if (!this.props.loggedIn) {
-            return (<h1>You Must Be logged in to use this page</h1>)
+            this.clickLogin()
+            return (
+                <h1>You Must Be logged in to use this page</h1>
+            )
         } else if (this.props.loggedIn && this.props.user.role === "COLLECTOR") {
             return (<div>
                 <h1>You Must Be a trainer to use this page</h1>
                 <h3>Please consider becoming a trainer</h3>
             </div>)
         } else {
-            // console.log("One "+ this.props.team)
             return (
                 <div>
                     <CollectedPokemon loggedIn={this.props.loggedIn}
-                                      user={this.props.user}
-                                      collectedPokemon={this.props.user.collectedPokemon}
-                                      training={true}
-                                      addPokemonToTeam={this.props.addPokemonToTeam}
-                                      removePokemonFromTeam={this.props.removePokemonFromTeam}
-                                      updatePokemonOnTeam={this.props.updatePokemonOnTeam}/>
+                        user={this.props.user}
+                        collectedPokemon={this.props.user.collectedPokemon}
+                        training={true}
+                        addPokemonToTeam={this.props.addPokemonToTeam}
+                        removePokemonFromTeam={this.props.removePokemonFromTeam}
+                        updatePokemonOnTeam={this.props.updatePokemonOnTeam} />
                 </div>)
         }
     }

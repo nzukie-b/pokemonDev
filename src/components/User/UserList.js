@@ -6,6 +6,9 @@ export default class UserList extends React.Component {
     constructor(props) {
         super(props)
         this.props.findAllUsers()
+        if (this.props.loggedIn) {
+            this.props.findUserById(this.props.user.id);
+        }
     }
 
     showCollectionProgress = () => {

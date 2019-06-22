@@ -57,7 +57,7 @@ export default class UserService {
                 headers: {
                     'content-type': 'application/json'
                 }
-            })
+            }).then(res => res.json())
     collectPokemon = (pokeId, userId, poke) =>
         fetch(serverAdress + `/api/users/${userId}/pokemon/${pokeId}`,
             {
@@ -70,12 +70,12 @@ export default class UserService {
                     'content-type': 'application/json'
                 },
                 method: 'PUT',
-            })
+            }).then(res => res.json())
     findUserByUserName = (username) =>
         fetch(serverAdress + `/api/users/username/${username}`,
             {
                 method: 'Get',
-            })
+            }).then(res => res.json())
 
     // findPokemonCollection = (userId) => {
     //     fetch(serverAdress + `/api/users/${userId}/pokemon`,

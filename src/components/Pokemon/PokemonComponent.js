@@ -7,7 +7,6 @@ export default class PokemonComponent extends React.Component {
     constructor(props) {
         super(props)
         this.props.findAllPokemon()
-        this.props.findPokemon("ditto")
     }
 
     render() {

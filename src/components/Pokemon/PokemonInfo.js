@@ -32,7 +32,7 @@ class PokemonInfo extends React.Component {
                     <h2>Type</h2>
                     <ul className="row">
                         {this.props.pokemon.types.map(
-                            (type) => <div className="col-6">
+                            (type) => <div className="col-12 col-md-6">
                                 {type.type.name}
                             </div>
                         )}
@@ -43,7 +43,7 @@ class PokemonInfo extends React.Component {
                     <ul className="row">
                         {this.props.pokemon.stats.map((stat) => {
                             return (
-                                <div className="col-6">{stat.stat.name} : {stat.base_stat}</div>
+                                <div className="col-12 col-md-6">{stat.stat.name} : {stat.base_stat}</div>
                             )
                         })}
                     </ul>
@@ -52,18 +52,19 @@ class PokemonInfo extends React.Component {
                     <h2>Abilities</h2>
                     <ul className="row">
                         {this.props.pokemon.abilities.map((ability) => <div
-                            className="col-6">{ability.ability.name}
+                            className="col-12 col-md-6">{ability.ability.name}
                         </div>)}
                     </ul>
                 </div>
                 <div className="border rounded mb-2 p-1">
                     <h2>Moves</h2>
                     <ul className="row">
-                        {this.props.pokemon.moves.map((move) => <div className="col-2">{move.move.name}</div>)}
+                        {this.props.pokemon.moves.map((move) =>
+                            <div className="col-12 col-sm-6 col-lg-2">{move.move.name}</div>)}
                     </ul>
                 </div>
                 {collectBtn(this.props.loggedIn, this.props.addPokemonToUser, this.props.pokemon, this.props.userId, this.redirectBack)}
-                <Link className="btn btn-block btn-outline-secondary" to="/search">Back</Link>
+                <Link className="btn btn-block btn-outline-secondary" to="/search">Back to Search</Link>
             </div>
         )
     }

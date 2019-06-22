@@ -28,9 +28,17 @@ export default class UserService {
 
     getUserByUserNameAndPassword = (userName, password) =>
         fetch(
-            serverAdress + `/api/users/username/${userName}/password/${password}`,
+            serverAdress + `/api/login`,
+
             {
-                method: 'Get',
+                method: 'Post',
+                body: JSON.stringify({
+                    username: `${userName}`,
+                    password: `${password}`
+                }),
+                headers: {
+                    'content-type': 'application/json'
+                }
             })
             .then(response => response.json())
     createUser = (user) =>

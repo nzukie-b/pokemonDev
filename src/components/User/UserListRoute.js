@@ -4,7 +4,7 @@ import { UserListContainer } from "../../containers/UserContainer"
 
 const UserListRoute = () => {
     return (
-        <Route path="/home"
+        <Route path={["(/home|/)"]}
             render={() => <UserListContainer/>} />
     )
 }

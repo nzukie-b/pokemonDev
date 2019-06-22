@@ -31,15 +31,8 @@ export default class UserProfilePage extends React.Component {
                         console.log("Updating user " + this.props.user.id)
                         console.log(this.props.user)
                         this.props.updateUser(this.props.user)
-                    }}>Update</div>)
-        } else {
-            return (
-                <div
-                    className="btn btn-block btn-success"
-                    onClick={() => {
-                        console.log("Creating user")
-                        this.props.createUser(this.props.user)
-                    }}>Create User</div>)
+                    }}>Update</div>
+            )
         }
     }
 

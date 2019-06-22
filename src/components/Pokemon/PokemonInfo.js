@@ -65,10 +65,10 @@ class PokemonInfo extends React.Component {
                     </ul>
                 </div>
                 <div className="border rounded mb-2 p-1">
-                    <h2>Children</h2>
+                    <h2>Other Users Captures</h2>
                     <ul className="row">
                         {this.props.pokeChildren.map((poke) =>
-                            <div>
+                            <div className="col-12 col-md-4 col-xl-2 pb-1">
                                 <div className="card">
                                     <img className="card-img-top img-fluid"
                                          src={poke.pokeId.frontSprite}/>

@@ -19,7 +19,7 @@ class PokemonInfo extends React.Component {
     render() {
         return (
             <div>
-                {this.props.pokemon.id > 1 &&
+                {this.props.pokemon.id > 1 && this.props.pokemon.id < 808 &&
                 <div className="btn btn-outline-info"
                     onClick={() => {
                     this.props.history.push("/pokemon/" + (this.props.pokemon.id - 1))
@@ -31,7 +31,7 @@ class PokemonInfo extends React.Component {
                     this.props.findPokeChildren(pokem)
                 }}>Last
                 </div>}
-                {this.props.pokemon.id < 964 &&
+                {this.props.pokemon.id < 807 &&
                 <div className="btn btn-outline-info float-right"
                      onClick={() => {
                          this.props.history.push("/pokemon/" + (this.props.pokemon.id + 1))

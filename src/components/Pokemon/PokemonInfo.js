@@ -89,7 +89,7 @@ class PokemonInfo extends React.Component {
                     </ul>
                 </div>
                 <div className="border rounded mb-2 p-1">
-                    <h2>Other Users Captures</h2>
+                    <h2>Other User's Captures</h2>
                     <ul className="row">
                         {this.props.pokeChildren.map((poke) =>
                             <div className="col-12 col-md-4 col-xl-2 pb-1">

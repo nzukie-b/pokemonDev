@@ -19,6 +19,30 @@ class PokemonInfo extends React.Component {
     render() {
         return (
             <div>
+                {this.props.pokemon.id > 1 &&
+                <div className="btn btn-outline-info"
+                    onClick={() => {
+                    this.props.history.push("/pokemon/" + (this.props.pokemon.id - 1))
+                    const pathname = window.location.pathname
+                    const paths = pathname.split('/')
+                    const pokem = paths[2]
+                    console.log(paths[2])
+                    this.props.findPokemon(pokem)
+                    this.props.findPokeChildren(pokem)
+                }}>Last
+                </div>}
+                {this.props.pokemon.id < 964 &&
+                <div className="btn btn-outline-info float-right"
+                     onClick={() => {
+                         this.props.history.push("/pokemon/" + (this.props.pokemon.id + 1))
+                         const pathname = window.location.pathname
+                         const paths = pathname.split('/')
+                         const pokem = paths[2]
+                         console.log(paths[2])
+                         this.props.findPokemon(pokem)
+                         this.props.findPokeChildren(pokem)
+                     }}>Next
+                </div>}
                 <h1>{this.props.pokemon.name.charAt(0).toUpperCase() + this.props.pokemon.name.slice(1)}</h1>
                 <div className="border rounded mb-2 p-1">
                     <h2>Sprites</h2>

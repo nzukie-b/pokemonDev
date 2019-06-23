@@ -30,7 +30,8 @@ export default class PokemonComponent extends React.Component {
                                    userId={this.props.user.id}
                                    findPokemon={this.props.findPokemon}
                                    findPokeChildren={this.props.findPokeChildren}
-                                   pokeChildren={this.props.pokeChildren}/>
+                                   pokeChildren={this.props.pokeChildren}
+                                   findPokeChildrenId={this.props.findPokeChildrenId}/>
                            }/>
                 </div>
             </div>

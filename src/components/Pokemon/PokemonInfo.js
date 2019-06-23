@@ -4,14 +4,22 @@ import {Link, withRouter} from "react-router-dom";
 class PokemonInfo extends React.Component {
     constructor(props) {
         super(props);
+        this.refresh()
+    }
+
+    refresh = () => {
         const pathname = window.location.pathname
         const paths = pathname.split('/')
         const pokem = paths[2]
         console.log(paths[2])
         this.props.findPokemon(pokem)
-        this.props.findPokeChildren(pokem)
-    }
+        if (!Number.isInteger(Number.parseInt(pokem))) {
+            this.props.findPokeChildren(pokem)
+        } else {
+            this.props.findPokeChildrenId(pokem)
 
+        }
+    }
     redirectBack = () => {
         this.props.history.push("/search")
     }
@@ -21,26 +29,16 @@ class PokemonInfo extends React.Component {
             <div>
                 {this.props.pokemon.id > 1 && this.props.pokemon.id < 808 &&
                 <div className="btn btn-outline-info"
-                    onClick={() => {
-                    this.props.history.push("/pokemon/" + (this.props.pokemon.id - 1))
-                    const pathname = window.location.pathname
-                    const paths = pathname.split('/')
-                    const pokem = paths[2]
-                    console.log(paths[2])
-                    this.props.findPokemon(pokem)
-                    this.props.findPokeChildren(pokem)
-                }}>Last
+                     onClick={() => {
+                         this.props.history.push("/pokemon/" + (this.props.pokemon.id - 1))
+                         this.refresh()
+                     }}>Last
                 </div>}
                 {this.props.pokemon.id < 807 &&
                 <div className="btn btn-outline-info float-right"
                      onClick={() => {
                          this.props.history.push("/pokemon/" + (this.props.pokemon.id + 1))
-                         const pathname = window.location.pathname
-                         const paths = pathname.split('/')
-                         const pokem = paths[2]
-                         console.log(paths[2])
-                         this.props.findPokemon(pokem)
-                         this.props.findPokeChildren(pokem)
+                         this.refresh()
                      }}>Next
                 </div>}
                 <h1>{this.props.pokemon.name.charAt(0).toUpperCase() + this.props.pokemon.name.slice(1)}</h1>

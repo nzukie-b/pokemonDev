@@ -50,7 +50,14 @@ const propertyToDispatchMapper = dispatch => ({
             pokeChildren => dispatch({
                 type: "FIND_POKE_CHILDREN",
                 pokeChildren: pokeChildren
+            })),
+    findPokeChildrenId: (pokeId) =>
+        teamService.getAllTeamPokemonForPokemonId(pokeId).then(
+            pokeChildren => dispatch({
+                type: "FIND_POKE_CHILDREN",
+                pokeChildren: pokeChildren
             }))
+
 })
 
 const PokeContainer = connect(

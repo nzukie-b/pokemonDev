@@ -61,7 +61,13 @@ export default class TeamService {
             })
             .then(response => response.json())
     getAllTeamPokemonForPokemon = (PokeName) =>
-        fetch(serverAdress + `/api/users/pokemon/${PokeName}`,
+        fetch(serverAdress + `/api/users/pokemon/name/${PokeName}`,
+            {
+                method: 'Get'
+            })
+            .then(response => response.json())
+    getAllTeamPokemonForPokemonId = (PokeId) =>
+        fetch(serverAdress + `/api/users/pokemon/id/${PokeId}`,
             {
                 method: 'Get'
             })
